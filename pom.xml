@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 
-		<jacoco.version>0.8.3</jacoco.version>
+		<jacoco.version>0.8.5</jacoco.version>
 		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
 
 		<jacoco.utreportpath>${project.build.directory}/jacoco</jacoco.utreportpath>
