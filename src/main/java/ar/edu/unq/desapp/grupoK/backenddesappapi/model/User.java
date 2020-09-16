@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class User {
+    String id;
     String name;
     String pass;
     String nick;
     Integer points;
     String email;
     Integer donatedMoney;
-    Boolean flagDonate = false;
-    int month;
-    ArrayList<Proyect> donatedProyects;
+    ArrayList<Donate> donatedProyects;
 
     User(String name,
          String pass,
@@ -27,26 +26,26 @@ public class User {
             this.points = points;
             this.email = email;
             this.donatedMoney = donatedMoney;
-            this.month = Calendar.MONTH;
+            
 
     }
 
-    private void donate (Proyect proyect, Integer money){
-        this.donatedProyects.add(proyect);
-        proyect.receiveDonation(money, this);
+    private void donate (Proyect proyect, Integer money,String desciption){
+        this.extraPoint();
+        Donate newDonate = new Donate(proyect,this,desciption,money)
+        proyect.receiveDonation(newDonate);
         this.donatedMoney += money;
-        validateFlagDonate();
+        
     }
 
+    private extraPoint(){
+        //validar por mismo mes.
+        if(this.donatedProyects.size() > 1){
+            this.points+=500;
+        }
+    }
     public void giveMePoints(Integer points) {
         this.points += points;
     }
 
-    private void validateFlagDonate (){
-        if( Calendar.MONTH != this.month){
-            this.flagDonate = false;
-        }else {
-            this.flagDonate = true;
-        }
-    }
 }

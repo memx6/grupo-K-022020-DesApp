@@ -2,8 +2,8 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 import java.util.*;
 
 public class Proyect {
+    String id;
     String proyectName;
-    ArrayList<User> donor;
     Location location;
     String dateEnd ;
     String dateStart;
@@ -11,10 +11,11 @@ public class Proyect {
     Integer factor = 1000;
     Integer moneyNeededForProject = 0;
     Integer moneyReceiveForProject = 0;
+    ArrayList<Donation> donation;
 
-    Proyect(String name , ArrayList<User> donor, Location location , String dateEnd ,String dateStart ,Integer percentage ,Integer factor ){
+    Proyect(String name , ArrayList<Donation> donor, Location location , String dateEnd ,String dateStart ,Integer percentage ,Integer factor ){
             this.proyectName = name;
-            this.donor = donor;
+            this.donation = donor;
             this.location = location;
             this.dateEnd = dateEnd;
             this.dateStart = dateStart;
@@ -30,13 +31,19 @@ public class Proyect {
         factor = newFactor;
     }
 
-    public void receiveDonation(Integer money, User user) {
-        moneyReceiveForProject += money;
-        donor.add(user);
-        sendPointDonator(money, user);
+    public void receiveDonation(Donation donation) {
+        this.donation.add(donation);
+        this.addMoney(money);
+        Integer point = this.calculatedPoint(money);
+        User user = donation.getUser();
+        sendPointDonator(point,user);
     }
 
-    private void sendPointDonator(Integer money, User user) {
+    public void addMoney(Integer money){
+        this.moneyReceiveForProject += money;
+    }
+
+    public Integer calculatedPoint(Integer money){
         Integer points = money;
         if ( money < 1000) {
             points = 200;
@@ -44,6 +51,11 @@ public class Proyect {
         if ( location.population < 2000){
             points = points * 2;
         }
-        user.giveMePoints(points);
+        return points;
     }
+    private void sendPointDonator(Integer point, User user) {
+         user.giveMePoints(point);
+    }
+    
+
 }

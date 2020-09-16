@@ -12,5 +12,6 @@ public class Location {
         this.population = population;
         this.connectivityState = flag;
     }
+     
 
 }
