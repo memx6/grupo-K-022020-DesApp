@@ -2,60 +2,51 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 import java.util.*;
 
 public class Proyect {
-    String id;
-    String proyectName;
-    Location location;
-    String dateEnd ;
-    String dateStart;
-    Integer percentage = 100;
-    Integer factor = 1000;
-    Integer moneyNeededForProject = 0;
-    Integer moneyReceiveForProject = 0;
-    ArrayList<Donation> donation;
+    private String id;
+    private String proyectName;
+    private Location location;
+    private String dateStart;
+    private String dateEnd ;
+    private Integer minimumClosingPercentage = 100;
+    private Integer factor = 1000;
+    private Integer moneyNeededForProject = 0;
+    private Integer moneyReceiveForProject = 0;
+    private ArrayList<Donation> donations;
 
-    Proyect(String name , ArrayList<Donation> donor, Location location , String dateEnd ,String dateStart ,Integer percentage ,Integer factor ){
+    Proyect(String name, ArrayList<Donation> donor, Location location, String dateStart, String dateEnd, Integer percentageMinimum, Integer factor ){
             this.proyectName = name;
-            this.donation = donor;
+            this.donations = donor;
             this.location = location;
-            this.dateEnd = dateEnd;
             this.dateStart = dateStart;
-            this.percentage = percentage;
+            this.dateEnd = dateEnd;
+            this.minimumClosingPercentage = percentageMinimum;
             this.factor = factor;
-    }
-
-    private Integer moneyNeededForProject (){
-        return moneyNeededForProject = location.population * factor;
     }
 
     private void setFactor (Integer newFactor){
         factor = newFactor;
     }
 
+    public Integer moneyNeededForProject (){
+        return moneyNeededForProject = location.population() * factor;
+    }
+
     public void receiveDonation(Donation donation) {
-        this.donation.add(donation);
-        this.addMoney(money);
-        Integer point = this.calculatedPoint(money);
-        User user = donation.getUser();
-        sendPointDonator(point,user);
+        this.donations.add(donation);
+        this.addMoney(donation.moneyDonate());
     }
 
     public void addMoney(Integer money){
         this.moneyReceiveForProject += money;
     }
 
-    public Integer calculatedPoint(Integer money){
-        Integer points = money;
-        if ( money < 1000) {
-            points = 200;
-        }
-        if ( location.population < 2000){
-            points = points * 2;
-        }
-        return points;
+    public Integer moneyReceiveForProject (){
+        return moneyReceiveForProject;
     }
-    private void sendPointDonator(Integer point, User user) {
-         user.giveMePoints(point);
+
+    public ArrayList<Donation> allDonations(){
+        return donations;
     }
-    
+
 
 }
