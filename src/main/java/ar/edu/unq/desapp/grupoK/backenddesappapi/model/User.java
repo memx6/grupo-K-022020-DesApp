@@ -7,7 +7,7 @@ public class User {
     String name;
     String pass;
     String nick;
-    Integer points;
+    Integer points = 0;
     String email;
     Integer donatedMoney = 0;
     ArrayList<Donation> donatedProyects;
@@ -15,31 +15,30 @@ public class User {
     User(String name,
          String pass,
          String nick,
-         Integer points,
          String email){
 
             this.name = name;
             this.pass = pass;
             this.nick = nick;
-            this.points = points;
             this.email = email;
     }
 
-    public void donate (Proyect proyect, Integer money, String description){
-        this.extraPoint();
-        Donation newDonate = new Donation(proyect,this,description,money);
-        proyect.receiveDonation(newDonate);
+    public void donate (Project project, Integer money, String description){
+        Donation donation = new Donation(project,this,description,money);
+        donation.executeDonation();
         this.donatedMoney += money;
     }
 
-    private void extraPoint(){
-        //validar por mismo mes.
-        if(this.donatedProyects.size() > 1){
-            this.points+=500;
-        }
+    public Integer myPoints(){
+        return this.points;
     }
+
     public void giveMePoints(Integer points) {
         this.points += points;
+    }
+
+    public ArrayList<Donation> getDonatedProyects () {
+        return this.donatedProyects;
     }
 
 }

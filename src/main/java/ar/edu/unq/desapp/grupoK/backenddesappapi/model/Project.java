@@ -1,7 +1,7 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 import java.util.*;
 
-public class Proyect {
+public class Project {
     private String id;
     private String proyectName;
     private Location location;
@@ -13,7 +13,7 @@ public class Proyect {
     private Integer moneyReceiveForProject = 0;
     private ArrayList<Donation> donations;
 
-    Proyect(String name, ArrayList<Donation> donor, Location location, String dateStart, String dateEnd, Integer percentageMinimum, Integer factor ){
+    Project(String name, ArrayList<Donation> donor, Location location, String dateStart, String dateEnd, Integer percentageMinimum, Integer factor ){
             this.proyectName = name;
             this.donations = donor;
             this.location = location;
@@ -23,9 +23,20 @@ public class Proyect {
             this.factor = factor;
     }
 
-    private void setFactor (Integer newFactor){
+    public void setFactor (Integer newFactor){
         factor = newFactor;
     }
+
+    public void setMinimumClosingPercentage(Integer minimumClosingPercentage) {
+        this.minimumClosingPercentage = minimumClosingPercentage;
+    }
+
+    public Integer getMinimumClosingPercentage() {
+        return minimumClosingPercentage;
+    }
+
+    public Integer getFactor (){ return this.factor; }
+
 
     public Integer moneyNeededForProject (){
         return moneyNeededForProject = location.population() * factor;
@@ -45,8 +56,13 @@ public class Proyect {
     }
 
     public ArrayList<Donation> allDonations(){
-        return donations;
+        return this.donations;
     }
+
+    public Location getLocation (){
+        return this.location;
+    }
+
 
 
 }
