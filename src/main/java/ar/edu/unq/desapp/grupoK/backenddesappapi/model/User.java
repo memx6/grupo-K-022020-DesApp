@@ -1,52 +1,49 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class User {
+    String id;
     String name;
     String pass;
     String nick;
-    Integer points;
+    Integer points = 0;
     String email;
-    Integer donatedMoney;
-    Boolean flagDonate = false;
-    int month;
-    ArrayList<Proyect> donatedProyects;
+    Integer donatedMoney = 0;
+    ArrayList<Donation> donatedProyects = new ArrayList<Donation>();
 
     User(String name,
          String pass,
          String nick,
-         Integer points,
-         String email,
-         Integer donatedMoney){
+         String email){
 
             this.name = name;
             this.pass = pass;
             this.nick = nick;
-            this.points = points;
             this.email = email;
-            this.donatedMoney = donatedMoney;
-            this.month = Calendar.MONTH;
-
     }
 
-    private void donate (Proyect proyect, Integer money){
-        this.donatedProyects.add(proyect);
-        proyect.receiveDonation(money, this);
+    public void donate (Project project, Integer money, String description){
+        Donation donation = new Donation(project,this,description,money);
+        donation.executeDonation();
         this.donatedMoney += money;
-        validateFlagDonate();
+        this.donatedProyects.add(donation);
+    }
+
+    public Integer myPoints(){
+        return this.points;
     }
 
     public void giveMePoints(Integer points) {
         this.points += points;
     }
 
-    private void validateFlagDonate (){
-        if( Calendar.MONTH != this.month){
-            this.flagDonate = false;
-        }else {
-            this.flagDonate = true;
-        }
+    public ArrayList<Donation> getDonatedProyects () {
+        return this.donatedProyects;
     }
+
+    public String getName(){
+        return this.name;
+    }
+
 }

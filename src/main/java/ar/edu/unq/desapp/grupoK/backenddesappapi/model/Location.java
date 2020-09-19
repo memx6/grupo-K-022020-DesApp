@@ -2,15 +2,19 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 public class Location {
     String name;
-    String state;
+    String province;
     Integer population;
     Boolean connectivityState;
 
-     Location(String name , String state, Integer population ,Boolean flag ){
+     Location(String name, String province, Integer population, Boolean state ){
         this.name = name;
-        this.state = state;
+        this.province = province;
         this.population = population;
-        this.connectivityState = flag;
+        this.connectivityState = state;
     }
 
+
+    public Integer population() {
+        return this.population;
+    }
 }
