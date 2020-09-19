@@ -13,13 +13,19 @@ import static org.mockito.Mockito.when;
 
 public class ProjectTest {
 
-    private Project project;
+    Project project;
+    ArrayList<Donation> donations = new ArrayList<Donation>();
+    User user ;
+
+    Donation d1;
     @BeforeEach
     void setUp () {
         Location location = mock(Location.class);
         when(location.population()).thenReturn(1500);
-        ArrayList<Donation> listDonation = mock(ArrayList.class);;
-        project = new Project("avellaneda", listDonation, location, "enero", "agosto", 100, 1000 );
+        user = mock(User.class);
+        project = new Project("avellaneda", donations, location, "enero", "agosto", 100, 1000 );
+        d1 = new Donation(project,user,"Suerte",1000);
+
 
     }
     @Test
@@ -43,11 +49,10 @@ public class ProjectTest {
 
     @Test
     public void testReceiveDonation() throws Exception {
-        Donation donation = mock(Donation.class);
-        when(donation.moneyDonate()).thenReturn(1000);
-        project.receiveDonation(donation);
 
-        //assertEquals(project.allDonations().size() , 1);
+        project.receiveDonation(d1);
+
+        assertEquals(project.allDonations().size() , 1);
         assertEquals(project.moneyReceiveForProject().intValue() , 1000);
     }
 

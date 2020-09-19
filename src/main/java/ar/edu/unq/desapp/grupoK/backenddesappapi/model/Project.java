@@ -12,6 +12,7 @@ public class Project {
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
     private ArrayList<Donation> donations;
+    public boolean visibility = true;
 
     Project(String name, ArrayList<Donation> donor, Location location, String dateStart, String dateEnd, Integer percentageMinimum, Integer factor ){
             this.proyectName = name;
@@ -21,6 +22,7 @@ public class Project {
             this.dateEnd = dateEnd;
             this.minimumClosingPercentage = percentageMinimum;
             this.factor = factor;
+            this.moneyNeededForProject= this.moneyReceiveForProject();
     }
 
     public void setFactor (Integer newFactor){
@@ -63,6 +65,20 @@ public class Project {
         return this.location;
     }
 
+    public void downProject(){
+        this.visibility = false;
+    }
 
+    public void UpProject(){
+        this.visibility = true;
+    }
+
+    public boolean projectCanBeClosed(){
+        return this.moneyReceiveForProject() >= this.moneyNeededForProject();
+    }
+
+    public String getName(){
+        return this.proyectName;
+    }
 
 }

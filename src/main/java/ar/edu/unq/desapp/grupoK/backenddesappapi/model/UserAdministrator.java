@@ -16,5 +16,21 @@ public class UserAdministrator extends User {
         this.projects = projects;
     }
 
+    public void closeProyect(Project project) {
+        if(project.projectCanBeClosed()){
+            project.downProject();
+            for (int i = 0 ; i < project.allDonations().size() ; i ++){
+                this.sendMailForDonated(project , project.allDonations().get(i).user);
+            }
+
+        }
+
+    }
+
+    private void sendMailForDonated(Project project , User user){
+
+        System.out.println("this proyect " + project.getName() + " is close , tanks " + user.getName() + " for your colaboration. ");
+    }
+
     //Up and down.
 }

@@ -10,7 +10,7 @@ public class User {
     Integer points = 0;
     String email;
     Integer donatedMoney = 0;
-    ArrayList<Donation> donatedProyects;
+    ArrayList<Donation> donatedProyects = new ArrayList<Donation>();
 
     User(String name,
          String pass,
@@ -27,6 +27,7 @@ public class User {
         Donation donation = new Donation(project,this,description,money);
         donation.executeDonation();
         this.donatedMoney += money;
+        this.donatedProyects.add(donation);
     }
 
     public Integer myPoints(){
@@ -39,6 +40,10 @@ public class User {
 
     public ArrayList<Donation> getDonatedProyects () {
         return this.donatedProyects;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }
