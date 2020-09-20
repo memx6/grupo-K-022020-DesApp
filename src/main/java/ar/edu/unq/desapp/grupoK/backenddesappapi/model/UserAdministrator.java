@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
-import java.util.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class UserAdministrator extends User {
     ArrayList<Project> projects;
@@ -16,21 +18,26 @@ public class UserAdministrator extends User {
         this.projects = projects;
     }
 
+    public Project createProject(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor) {
+        return new Project(name,  location, dateEnd,percentageMinimum, factor);
+    }
+
     public void closeProyect(Project project) {
-        if(project.projectCanBeClosed()){
+        if(this.projectCanBeClosed(project)){
             project.downProject();
-            for (int i = 0 ; i < project.allDonations().size() ; i ++){
-                this.sendMailForDonated(project , project.allDonations().get(i).user);
-            }
-
+            project.allDonations().forEach(donation -> this.sendMailForDonated(project, donation.userDonator()));
         }
+    }
 
+    public boolean projectCanBeClosed(Project project){
+        return  minimumPercentageCompleted(project); //&& project.getDateEnd() == LocalDate.now();
+    }
+
+    public boolean minimumPercentageCompleted(Project project) {
+        return ((project.moneyReceiveForProject() / project.moneyNeededForProject())* 100) >= project.getMinimumClosingPercentage();
     }
 
     private void sendMailForDonated(Project project , User user){
-
         System.out.println("this proyect " + project.getName() + " is close , tanks " + user.getName() + " for your colaboration. ");
     }
-
-    //Up and down.
 }

@@ -4,21 +4,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest {
     private Project project ;
     private User user;
-    private  Location location ;
+    private Location location ;
 
     @BeforeEach
     void setUp (){
         location = new Location("Avellaneda","Buenos Aires",10,false);
-        ArrayList<Donation> donations = new ArrayList<Donation>();
-        project = new Project("Conectar Igualdad", donations, location, "enero", "agosto", 100, 1000 );
+        project = new Project("Conectar Igualdad", location, LocalDate.of(2020,12,11),  100, 1000);
         user  = new User("Federico","pepito","Fefi","fedeericosanchez18@gmail.com");
     }
 
@@ -39,6 +36,5 @@ public class UserTest {
         user.donate(project,100,"Suerte!");
         assertEquals(user.donatedMoney,100);
     }
-
 }
 

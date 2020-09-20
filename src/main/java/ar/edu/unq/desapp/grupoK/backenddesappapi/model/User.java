@@ -10,7 +10,7 @@ public class User {
     Integer points = 0;
     String email;
     Integer donatedMoney = 0;
-    ArrayList<Donation> donatedProyects = new ArrayList<Donation>();
+    ArrayList<Donation> donatedProyects = new ArrayList<>();
 
     User(String name,
          String pass,

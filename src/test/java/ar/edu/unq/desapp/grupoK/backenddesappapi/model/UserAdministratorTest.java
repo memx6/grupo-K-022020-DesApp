@@ -1,12 +1,16 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class UserAdministratorTest {
 
@@ -20,20 +24,17 @@ public class UserAdministratorTest {
     Location location1;
     Location location2;
     Location location3;
-    ArrayList<Donation> d1 = new ArrayList<Donation>();
-    ArrayList<Donation> d2 = new ArrayList<Donation>();
-    ArrayList<Donation> d3 = new ArrayList<Donation>();
-    ArrayList<User> users = new ArrayList<User>();
-    ArrayList<Project> proyects= new ArrayList<Project>();
+    ArrayList<User> users = new ArrayList<>();
+    ArrayList<Project> proyects= new ArrayList<>();
 
     @BeforeEach
     void setUp() {
         location1 = new Location(" Wilde", "Buenos Aires", 10, false);
         location2 = new Location("Bernal", "Buenos Aires", 10, false);
         location3 = new Location(" Quilmes", "Mendoza", 10, false);
-        project1 = new Project("Conectar igualdad", d1, location1, "enero", "agosto", 100, 0);
-        project2 = new Project("Conectar igualdad", d2, location2, "enero", "agosto", 100, 1000);
-        project3 = new Project("Conectar igualdad", d3, location3, "enero", "agosto", 100, 1000);
+        project1 = new Project("Conectar igualdad", location1, LocalDate.of(2020,12,11),  100, 1000);
+        project2 = new Project("Conectar igualdad", location2, LocalDate.of(2020,12,11), 100, 1000);
+        project3 = new Project("Conectar igualdad", location3, LocalDate.of(2020,12,11),  100, 1000);
         user1 =  new User("Federico","pepito","Icardi","fedeericosanchez18@gmail.com");
         user2 =  new User("Mauro","pepita","Maxi Lopez","mauromarino@gmail.com");
         user3 =  new User("Joni","pepon","Jona","jonmaia@gmail.com");
@@ -46,11 +47,30 @@ public class UserAdministratorTest {
     }
 
     @Test
+    void whenAAdminCreateProjectShouldReturnAValidProject() {
+        Location location = mock(Location.class);
+
+        Project newProject = Mockito.spy(userAdm.createProject("project1", location1, LocalDate.of(2020, 12, 11), 60, 1000));
+
+        when(newProject.getName()).thenReturn("project1");
+        when(newProject.getMinimumClosingPercentage()).thenReturn(60);
+        when(newProject.getDateEnd()).thenReturn(LocalDate.of(2020, 12, 11));
+        when(newProject.getLocation()).thenReturn(location);
+        when(newProject.getFactor()).thenReturn(1000);
+        when(newProject.moneyNeededForProject()).thenReturn(1000);
+
+        assertEquals(newProject.getName(), "project1");
+        assertEquals(newProject.getMinimumClosingPercentage(), 60);
+        assertEquals(newProject.getDateEnd(), LocalDate.of(2020, 12, 11));
+        assertEquals(newProject.getLocation(), location);
+        assertEquals(newProject.getFactor(), 1000);
+        when(newProject.moneyNeededForProject()).thenReturn(1000);
+    }
+
+    @Test
     void closeProject(){
+        user1.donate(project1,10000, "I donate the total to finish the project");
         userAdm.closeProyect(project1);
         assertTrue(!project1.visibility);
     }
-
-
-
 }

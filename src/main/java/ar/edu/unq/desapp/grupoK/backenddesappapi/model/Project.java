@@ -1,28 +1,33 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
-import java.util.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Project {
-    private String id;
     private String proyectName;
     private Location location;
-    private String dateStart;
-    private String dateEnd ;
+    private LocalDate dateStart;
+    private LocalDate dateEnd ;
     private Integer minimumClosingPercentage = 100;
     private Integer factor = 1000;
-    private Integer moneyNeededForProject = 0;
+    private Integer moneyNeededForProject;
     private Integer moneyReceiveForProject = 0;
-    private ArrayList<Donation> donations;
+    private ArrayList<Donation> donations ;
     public boolean visibility = true;
 
-    Project(String name, ArrayList<Donation> donor, Location location, String dateStart, String dateEnd, Integer percentageMinimum, Integer factor ){
+    Project(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor){
             this.proyectName = name;
-            this.donations = donor;
+            this.donations = new ArrayList<>();
             this.location = location;
-            this.dateStart = dateStart;
+            this.dateStart = LocalDate.now();
             this.dateEnd = dateEnd;
-            this.minimumClosingPercentage = percentageMinimum;
+            this.minimumClosingPercentage = (percentageMinimum >= 50 && percentageMinimum <= 100) ? percentageMinimum : 50;;
             this.factor = factor;
-            this.moneyNeededForProject= this.moneyReceiveForProject();
+            this.moneyNeededForProject= moneyNeededForProject();
+    }
+
+    public String getName(){
+        return this.proyectName;
     }
 
     public void setFactor (Integer newFactor){
@@ -30,15 +35,26 @@ public class Project {
     }
 
     public void setMinimumClosingPercentage(Integer minimumClosingPercentage) {
-        this.minimumClosingPercentage = minimumClosingPercentage;
+        if (minimumClosingPercentage < 50 || minimumClosingPercentage > 100) {
+            throw new IllegalArgumentException("The percentage is not within the allowed range, choose a range between 50 and 100");
+        }else {
+            this.minimumClosingPercentage = minimumClosingPercentage;
+        }
     }
 
     public Integer getMinimumClosingPercentage() {
         return minimumClosingPercentage;
     }
 
-    public Integer getFactor (){ return this.factor; }
+    public Location getLocation (){
+        return this.location;
+    }
 
+    public LocalDate getDateEnd (){
+        return this.dateEnd;
+    }
+
+    public Integer getFactor (){ return this.factor; }
 
     public Integer moneyNeededForProject (){
         return moneyNeededForProject = location.population() * factor;
@@ -61,24 +77,11 @@ public class Project {
         return this.donations;
     }
 
-    public Location getLocation (){
-        return this.location;
-    }
-
     public void downProject(){
         this.visibility = false;
     }
 
-    public void UpProject(){
-        this.visibility = true;
+    public boolean activeProject(){
+        return this.visibility;
     }
-
-    public boolean projectCanBeClosed(){
-        return this.moneyReceiveForProject() >= this.moneyNeededForProject();
-    }
-
-    public String getName(){
-        return this.proyectName;
-    }
-
 }

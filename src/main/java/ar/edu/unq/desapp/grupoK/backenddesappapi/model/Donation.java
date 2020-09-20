@@ -3,11 +3,11 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 import java.time.LocalDate;
 
 public class Donation {
-    Project project;
-    User user;
-    String description;
-    Integer money;
-    LocalDate dateTrx;
+    private Project project;
+    private User user;
+    private String description;
+    private Integer money;
+    private LocalDate dateTrx;
 
     Donation(Project project, User user, String description, Integer money) {
         this.project = project;
@@ -65,6 +65,4 @@ public class Donation {
     public Integer donationsPerMonthCalender(){
         return this.userDonator().getDonatedProyects().stream().filter(donation -> donation.donationMonth().getMonth() == LocalDate.now().getMonth()).toArray().length;
     }
-
-
 }
