@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,10 +20,9 @@ class DonationTest {
     @BeforeEach
     void setUp () {
         Location location = mock(Location.class);
-        ArrayList<Donation> listDonation = mock(ArrayList.class);
         when(location.population()).thenReturn(500);
-        project = new Project("avellaneda", listDonation, location, "enero", "agosto", 100, 1000 );
-        user = mock(User.class);
+        project = new Project("avellaneda", location, LocalDate.of(2020,12,11), 100, 1000);
+        user =  new User("Federico","pepito","Icardi","fedeericosanchez18@gmail.com");
 
         donation = new Donation(project, user,"donation", 500 );
 
@@ -64,22 +63,23 @@ class DonationTest {
     @Test
     void calculatePointsObtainedForDonation() {
         donation.calculatePointsObtained();
-        when(user.myPoints()).thenReturn(1600);
-        assertEquals(donation.userDonator().myPoints(), 1600);
+        assertEquals(donation.getPoints(), 1000);
     }
 
     @Test
     void pointsPerMonthCalender(){
+        user.donate(project,100,"uno");
+        user.donate(project,200,"dos");
         donation.pointsPerMonthCalender();
-        when(user.myPoints()).thenReturn(500);
-        assertEquals(donation.userDonator().myPoints(), 500);
+        assertEquals(donation.getPoints(), 1100);
     }
 
     @Test
     void donationsPerMonthCalender(){
-        when(user.getDonatedProyects()).thenReturn(donations);
+        user.donate(project,100,"uno");
+        user.donate(project,200,"dos");
+        assertEquals(user.getDonatedProyects().size(), 2);
         assertEquals(donation.donationsPerMonthCalender(), 2);
-
     }
 }
 

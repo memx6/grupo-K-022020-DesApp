@@ -13,7 +13,6 @@ public class Location {
         this.connectivityState = state;
     }
 
-
     public Integer population() {
         return this.population;
     }
