@@ -1,0 +1,19 @@
+
+---------------------------------------------------------------------
+TAG ENTREGA 1.0
+---------------------------------------------------------------------
+NEW FEATURES:
+ * creation repo GitHub
+ * creation project SprintBoot
+ * config Travis backend
+ * build backend
+ * codacy integrate backend
+ * Coverage
+ * heroku deploy backend
+ * model - UnitTest (Coverage 98%)
+
+NOTES:
+* The email functionality is implemented as a console printout.
+
+KNOWN ISSUES:
+* -
