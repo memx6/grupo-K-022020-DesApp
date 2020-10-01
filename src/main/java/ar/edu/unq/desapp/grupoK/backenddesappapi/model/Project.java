@@ -1,21 +1,37 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "project")
 public class Project {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     private String proyectName;
+
+    @OneToOne
     private Location location;
+
     private LocalDate dateStart;
     private LocalDate dateEnd ;
     private Integer minimumClosingPercentage = 100;
     private Integer factor = 1000;
     private Integer moneyNeededForProject;
     private Integer moneyReceiveForProject = 0;
-    private ArrayList<Donation> donations ;
+
+    @OneToMany(mappedBy = "project")
+    private List<Donation> donations;
+
     public boolean visibility = true;
 
-    Project(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor){
+    public Project() {super();}
+
+    public Project(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor){
             this.proyectName = name;
             this.donations = new ArrayList<>();
             this.location = location;
@@ -73,7 +89,7 @@ public class Project {
         return moneyReceiveForProject;
     }
 
-    public ArrayList<Donation> allDonations(){
+    public List<Donation> allDonations(){
         return this.donations;
     }
 

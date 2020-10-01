@@ -1,18 +1,29 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "user")
 public class User {
-    String id;
-    String name;
-    String pass;
-    String nick;
-    Integer points = 0;
-    String email;
-    Integer donatedMoney = 0;
-    ArrayList<Donation> donatedProyects = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    User(String name,
+    protected String name;
+    protected String pass;
+    protected String nick;
+    protected Integer points = 0;
+    protected String email;
+    protected Integer donatedMoney = 0;
+
+    @OneToMany(mappedBy = "user")
+    protected List<Donation> donatedProyects = new ArrayList<>();
+
+    public User() {super();}
+
+    public User(String name,
          String pass,
          String nick,
          String email){
@@ -38,7 +49,7 @@ public class User {
         this.points += points;
     }
 
-    public ArrayList<Donation> getDonatedProyects () {
+    public List<Donation> getDonatedProyects () {
         return this.donatedProyects;
     }
 

@@ -1,15 +1,30 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "donation")
 public class Donation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @ManyToOne()
+    @JoinColumn(name = "project_id")
     private Project project;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
     private User user;
+
     private String description;
     private Integer money;
     private LocalDate dateTrx;
 
-    Donation(Project project, User user, String description, Integer money) {
+    public Donation() {super();}
+
+    public Donation(Project project, User user, String description, Integer money) {
         this.project = project;
         this.user = user;
         this.description = description;
