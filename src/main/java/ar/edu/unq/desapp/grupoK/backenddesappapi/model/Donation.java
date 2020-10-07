@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -22,7 +24,7 @@ public class Donation {
     private Integer money;
     private LocalDate dateTrx;
 
-    public Donation() {super();}
+    public Donation() {}
 
     public Donation(Project project, User user, String description, Integer money) {
         this.project = project;
@@ -32,10 +34,18 @@ public class Donation {
         this.dateTrx = LocalDate.now();
     }
 
-    public LocalDate donationMonth(){
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDate getDonationMonth(){
         return this.dateTrx;
     }
-    public User userDonator() {
+    public User getUserDonator() {
         return this.user;
     }
 
@@ -43,15 +53,21 @@ public class Donation {
         this.money = money;
     }
 
-    public Integer moneyDonate() {
+    public Integer getMoneyDonate() {
         return this.money;
     }
 
     public Integer getPoints() {
-        return this.user.myPoints();
+        return this.user.getMyPoints();
     }
 
-    public void executeDonation(){
+    public String getDescription(){
+        return this.description;
+    }
+
+    public void setDescription(String description){this.description = description;}
+
+    public void executeDonation() throws InvalidDonatedMoney {
         this.calculatePointsObtained();
         this.project.receiveDonation(this);
     }
@@ -60,24 +76,24 @@ public class Donation {
         Integer moneyPoints = this.pointsMoneyMoreThousand();
         Integer populationPoints = this.pointsPopulation();
         this.pointsPerMonthCalender();
-        this.userDonator().giveMePoints(moneyPoints + populationPoints);
+        this.getUserDonator().giveMePoints(moneyPoints + populationPoints);
     }
 
     public Integer pointsPopulation() {
-        return this.project.getLocation().population() < 2000 ? this.moneyDonate() * 2 : 0;
+        return this.project.getLocation().getPopulation() < 2000 ? this.getMoneyDonate() * 2 : 0;
     }
 
     public Integer pointsMoneyMoreThousand() {
-        return this.moneyDonate() >= 1000 ? this.moneyDonate() : 0;
+        return this.getMoneyDonate() >= 1000 ? this.getMoneyDonate() : 0;
     }
 
     public void pointsPerMonthCalender() {
         if (donationsPerMonthCalender() >= 2) {
-            this.userDonator().giveMePoints(500);
+            this.getUserDonator().giveMePoints(500);
         }
     }
 
     public Integer donationsPerMonthCalender(){
-        return this.userDonator().getDonatedProyects().stream().filter(donation -> donation.donationMonth().getMonth() == LocalDate.now().getMonth()).toArray().length;
+        return this.getUserDonator().getDonatedProyects().stream().filter(donation -> donation.getDonationMonth().getMonth() == LocalDate.now().getMonth()).toArray().length;
     }
 }

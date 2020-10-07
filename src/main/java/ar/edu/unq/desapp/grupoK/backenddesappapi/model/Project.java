@@ -1,5 +1,10 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,14 +19,14 @@ public class Project {
 
     private String proyectName;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Location location;
 
     private LocalDate dateStart;
     private LocalDate dateEnd ;
     private Integer minimumClosingPercentage = 100;
-    private Integer factor = 1000;
-    private Integer moneyNeededForProject;
+    private Integer factor = 1000; // Cambiar factor por Double para poder poner porcentajes parciales
+    private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
     @OneToMany(mappedBy = "project")
@@ -29,7 +34,7 @@ public class Project {
 
     public boolean visibility = true;
 
-    public Project() {super();}
+    public Project() {}
 
     public Project(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor){
             this.proyectName = name;
@@ -42,17 +47,28 @@ public class Project {
             this.moneyNeededForProject= moneyNeededForProject();
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName(){
         return this.proyectName;
     }
 
-    public void setFactor (Integer newFactor){
+    public void setFactor (Integer newFactor) throws FactorInvalid {
+        if (factor <= 0 || factor > 10000) {
+            throw new FactorInvalid();
+        }
         factor = newFactor;
     }
 
-    public void setMinimumClosingPercentage(Integer minimumClosingPercentage) {
+    public void setMinimumClosingPercentage(Integer minimumClosingPercentage) throws InvalidMinPercent {
         if (minimumClosingPercentage < 50 || minimumClosingPercentage > 100) {
-            throw new IllegalArgumentException("The percentage is not within the allowed range, choose a range between 50 and 100");
+            throw new InvalidMinPercent();
         }else {
             this.minimumClosingPercentage = minimumClosingPercentage;
         }
@@ -72,16 +88,26 @@ public class Project {
 
     public Integer getFactor (){ return this.factor; }
 
+    public void setDateEnd (LocalDate endDate) throws InvalidDateEndForProject {
+        if (endDate.isBefore(this.dateStart)) {
+            throw new InvalidDateEndForProject();
+        }
+        this.dateEnd = endDate;
+    }
+
     public Integer moneyNeededForProject (){
-        return moneyNeededForProject = location.population() * factor;
+        return moneyNeededForProject = location.getPopulation() * factor;
     }
 
-    public void receiveDonation(Donation donation) {
+    public void receiveDonation(Donation donation) throws InvalidDonatedMoney {
         this.donations.add(donation);
-        this.addMoney(donation.moneyDonate());
+        this.addMoney(donation.getMoneyDonate());
     }
 
-    public void addMoney(Integer money){
+    public void addMoney(Integer money) throws InvalidDonatedMoney {
+        if (money < 0) {
+            throw new InvalidDonatedMoney();
+        }
         this.moneyReceiveForProject += money;
     }
 

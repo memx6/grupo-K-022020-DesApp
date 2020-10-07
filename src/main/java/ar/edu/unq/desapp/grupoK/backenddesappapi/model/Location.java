@@ -23,7 +23,23 @@ public class Location {
         this.connectivityState = state;
     }
 
-    public Integer population() {
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+    public String getProvince() {
+        return this.province;
+    }
+    public Integer getPopulation() {
         return this.population;
+    }
+    public Boolean getConnectivityStat() {
+        return this.connectivityState;
     }
 }

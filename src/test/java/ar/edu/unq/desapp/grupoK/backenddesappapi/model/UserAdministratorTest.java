@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -68,7 +69,7 @@ public class UserAdministratorTest {
     }
 
     @Test
-    void closeProject(){
+    void closeProject() throws InvalidDonatedMoney {
         user1.donate(project1,10000, "I donate the total to finish the project");
         userAdm.closeProyect(project1);
         assertTrue(!project1.visibility);

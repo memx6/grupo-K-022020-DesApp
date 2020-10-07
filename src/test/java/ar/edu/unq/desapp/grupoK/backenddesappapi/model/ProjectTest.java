@@ -1,6 +1,10 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +25,9 @@ public class ProjectTest {
     @BeforeEach
     void setUp () {
         location = mock(Location.class);
-        when(location.population()).thenReturn(1500);
+        when(location.getPopulation()).thenReturn(1500);
+        when(location.getProvince()).thenReturn("Buenos Aires");
+        when(location.getConnectivityStat()).thenReturn(false);
         user = mock(User.class);
         project = new Project("avellaneda", location, LocalDate.of(2020,12,11),100, 1000);
         donation = new Donation(project,user,"Suerte",1000);
@@ -42,31 +48,66 @@ public class ProjectTest {
     }
 
     @Test
-    public void setFactorInProject() {
+    public void setFactorInProject() throws FactorInvalid {
         project.setFactor(50);
 
         assertEquals(project.getFactor() , 50);
     }
 
     @Test
-    public void theMinimumValidPercentageSettingIsTested() {
+    public void theMinimumValidPercentageSettingIsTested() throws InvalidMinPercent {
         project.setMinimumClosingPercentage(50);
         assertEquals(project.getMinimumClosingPercentage(), 50);
     }
 
     @Test
     public void percentageSettingInvalidIsTested()  {
-        assertThrows(IllegalArgumentException.class, () -> project.setMinimumClosingPercentage(40));
+        try {
+            project.setMinimumClosingPercentage(40);
+        }catch (InvalidMinPercent e) {
+            assertEquals("The percentage is not within the allowed range, choose a range between 50 and 100", e.getMessage());
+        }
     }
 
     @Test
-    public void moneyReceiveForProject() {
+    public void factorInvalidIsTested()  {
+        try {
+            project.setFactor(-1);
+        }catch (FactorInvalid e) {
+            assertEquals("Factor Invalid. Project factor between 0 and 100000.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void moneyReceiveForProject() throws InvalidDonatedMoney {
         project.addMoney(500);
         assertEquals(project.moneyReceiveForProject(), 500);
     }
+    @Test
+    public void moneyDonatedInvalidIsTested()  {
+        try {
+            project.addMoney(-1);
+        }catch (InvalidDonatedMoney e) {
+            assertEquals("The amount donated cannot be less than or equal to 0", e.getMessage());
+        }
+    }
 
     @Test
-    public void testReceiveDonation() {
+    public void setDateEndValidIsTested() throws InvalidDateEndForProject {
+        project.setDateEnd(LocalDate.of(2022,12,11));
+
+        assertEquals(project.getDateEnd(), LocalDate.of(2022, 12, 11));
+    }
+    @Test
+    public void setDateEndInvalidIsTested()  {
+        try {
+            project.setDateEnd(LocalDate.of(2019,12,11));
+        }catch (InvalidDateEndForProject e) {
+            assertEquals("Invalid end date. The Project end date must be after the start date", e.getMessage());
+        }
+    }
+    @Test
+    public void testReceiveDonation() throws InvalidDonatedMoney {
 
         project.receiveDonation(donation);
 

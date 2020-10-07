@@ -20,7 +20,7 @@ public class UserService {
         return this.userRepository.save(model);
     }
 
-    public User findByID(Integer id) {
+    public User userByID(Integer id) {
         return this.userRepository.findById(id).get();
     }
 
