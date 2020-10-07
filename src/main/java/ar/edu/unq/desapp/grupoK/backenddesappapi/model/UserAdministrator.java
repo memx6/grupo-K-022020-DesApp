@@ -1,18 +1,28 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class UserAdministrator extends User {
-    ArrayList<Project> projects;
-    ArrayList<User> users;
 
-    UserAdministrator(String name,
+    @OneToMany
+    protected List<Project> projects = new ArrayList<>();
+
+    @OneToMany
+    protected List<User> users = new ArrayList<>();
+
+    public UserAdministrator(){}
+
+    public UserAdministrator(String name,
                       String pass,
                       String nick,
                       String email,
-                      ArrayList<User> users,
-                      ArrayList<Project> projects) {
+                      List<User> users,
+                      List<Project> projects) {
         super(name, pass, nick, email);
         this.users = users;
         this.projects = projects;
@@ -25,7 +35,7 @@ public class UserAdministrator extends User {
     public void closeProyect(Project project) {
         if(this.projectCanBeClosed(project)){
             project.downProject();
-            project.allDonations().forEach(donation -> this.sendMailForDonated(project, donation.userDonator()));
+            project.allDonations().forEach(donation -> this.sendMailForDonated(project, donation.getUserDonator()));
         }
     }
 

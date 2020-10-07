@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ class DonationTest {
     @BeforeEach
     void setUp () {
         Location location = mock(Location.class);
-        when(location.population()).thenReturn(500);
+        when(location.getPopulation()).thenReturn(500);
         project = new Project("avellaneda", location, LocalDate.of(2020,12,11), 100, 1000);
         user =  new User("Federico","pepito","Icardi","fedeericosanchez18@gmail.com");
 
@@ -35,17 +36,25 @@ class DonationTest {
 
     @Test
     void donationMonthInMonthCalender() {
-        assertEquals(donation.donationMonth().getMonth() , LocalDate.now().getMonth());
+        assertEquals(donation.getDonationMonth().getMonth() , LocalDate.now().getMonth());
     }
-
+    @Test
+    void getDonationTested() {
+        assertEquals(donation.getDescription() , "donation");
+    }
+    @Test
+    void setDonationTested() {
+        donation.setDescription("DonationModificated");
+        assertEquals(donation.getDescription() , "DonationModificated");
+    }
     @Test
     void pointsReceivedFromATownWithLessThan2000Population() {
-        when(project.getLocation().population()).thenReturn(500);
+        when(project.getLocation().getPopulation()).thenReturn(500);
         assertEquals(donation.pointsPopulation() , 1000);
     }
     @Test
     void pointsReceivedFromATownWithMoreThan2000Population() {
-        when(project.getLocation().population()).thenReturn(3000);
+        when(project.getLocation().getPopulation()).thenReturn(3000);
         assertEquals(donation.pointsPopulation() , 0);
     }
 
@@ -67,7 +76,7 @@ class DonationTest {
     }
 
     @Test
-    void pointsPerMonthCalender(){
+    void pointsPerMonthCalender() throws InvalidDonatedMoney {
         user.donate(project,100,"uno");
         user.donate(project,200,"dos");
         donation.pointsPerMonthCalender();
@@ -75,7 +84,7 @@ class DonationTest {
     }
 
     @Test
-    void donationsPerMonthCalender(){
+    void donationsPerMonthCalender() throws InvalidDonatedMoney {
         user.donate(project,100,"uno");
         user.donate(project,200,"dos");
         assertEquals(user.getDonatedProyects().size(), 2);
