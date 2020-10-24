@@ -1,8 +1,12 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,28 +14,36 @@ import java.util.List;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Name is mandatory")
     protected String name;
-    protected String pass;
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 4, max = 8)
+    protected String password;
+    @NotBlank(message = "Nickname is mandatory")
+    @Size(min = 4, max = 6)
     protected String nick;
     protected Integer points = 0;
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Enter a correct email")
     protected String email;
     protected Integer donatedMoney = 0;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     protected List<Donation> donatedProyects = new ArrayList<>();
 
     public User() {}
 
     public User(String name,
-         String pass,
+         String password,
          String nick,
          String email){
 
             this.name = name;
-            this.pass = pass;
+            this.password = password;
             this.nick = nick;
             this.email = email;
     }
@@ -46,7 +58,7 @@ public class User {
 
     public String getName(){return this.name;}
     public String getNick(){return this.nick;}
-    public String getPass(){return this.pass;}
+    public String getPassword(){return this.password;}
     public String getEmail(){return this.email;}
     public Integer getMyPoints(){
         return this.points;
@@ -57,7 +69,7 @@ public class User {
 
     public void setName(String name){this.name = name ;}
     public void setNick(String nick){this.nick = nick;}
-    public void setPass(String pass){this.pass = pass;}
+    public void setPassword(String pass){this.password = pass;}
     public void setEmail(String email){this.email = email;}
     public void setMyPoints(Integer points){
         this.points = points;

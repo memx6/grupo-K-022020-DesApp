@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.services.builder;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Donation;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
 
 import java.util.ArrayList;

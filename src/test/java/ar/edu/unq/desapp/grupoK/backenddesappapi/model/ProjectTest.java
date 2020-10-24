@@ -5,10 +5,10 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import org.joda.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,13 +23,13 @@ public class ProjectTest {
     Donation donation;
 
     @BeforeEach
-    void setUp () {
+    void setUp () throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         location = mock(Location.class);
         when(location.getPopulation()).thenReturn(1500);
         when(location.getProvince()).thenReturn("Buenos Aires");
         when(location.getConnectivityStat()).thenReturn(false);
         user = mock(User.class);
-        project = new Project("avellaneda", location, LocalDate.of(2020,12,11),100, 1000);
+        project = new Project("avellaneda", location, LocalDate.parse("2020-12-11"),100, 1000);
         donation = new Donation(project,user,"Suerte",1000);
     }
 
@@ -39,7 +39,9 @@ public class ProjectTest {
         assertEquals(project.getMinimumClosingPercentage(), 100);
         assertEquals(project.getFactor(), 1000);
         assertEquals(project.getLocation(), location);
-        assertEquals(project.getDateEnd(), LocalDate.of(2020, 12, 11));
+        project.setVisibility(true);
+        assertEquals(project.getVisibility(), true);
+        assertEquals(project.getDateEnd(), LocalDate.parse("2020-12-11"));
     }
 
     @Test
@@ -94,14 +96,14 @@ public class ProjectTest {
 
     @Test
     public void setDateEndValidIsTested() throws InvalidDateEndForProject {
-        project.setDateEnd(LocalDate.of(2022,12,11));
+        project.setDateEnd(LocalDate.parse("2020-12-11"));
 
-        assertEquals(project.getDateEnd(), LocalDate.of(2022, 12, 11));
+        assertEquals(project.getDateEnd(), LocalDate.parse("2020-12-11"));
     }
     @Test
     public void setDateEndInvalidIsTested()  {
         try {
-            project.setDateEnd(LocalDate.of(2019,12,11));
+            project.setDateEnd(LocalDate.parse("2019-12-11"));
         }catch (InvalidDateEndForProject e) {
             assertEquals("Invalid end date. The Project end date must be after the start date", e.getMessage());
         }
@@ -111,7 +113,7 @@ public class ProjectTest {
 
         project.receiveDonation(donation);
 
-        assertEquals(project.allDonations().size() , 1);
+        assertEquals(project.getDonations().size() , 1);
         assertEquals(project.moneyReceiveForProject().intValue() , 1000);
     }
 
@@ -119,6 +121,9 @@ public class ProjectTest {
     public void testUpAndDownProject() {
         assertEquals(project.activeProject(), true);
         project.downProject();
+        when(location.getConnectivityStat()).thenReturn(true);
         assertEquals(project.activeProject(), false);
+        assertEquals(project.getLocation().getConnectivityStat(), true);
+
     }
 }

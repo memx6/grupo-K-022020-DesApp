@@ -3,7 +3,11 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.services.builder;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Donation;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
-import java.time.LocalDate;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +29,7 @@ public class ProjectBuilder {
         return builder;
     }
 
-    public Project build() {
+    public Project build() throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         return new Project(proyectName, location, dateEnd, minimumClosingPercentage, factor);
     }
 
@@ -39,8 +43,8 @@ public class ProjectBuilder {
         return this;
     }
 
-    public ProjectBuilder withVisibility(boolean visibility) {
-        this.visibility = visibility;
+    public ProjectBuilder withVisibility(boolean state) {
+        this.visibility = state;
         return this;
     }
 

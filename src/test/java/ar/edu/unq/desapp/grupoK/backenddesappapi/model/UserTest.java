@@ -1,10 +1,12 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import org.joda.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,9 +16,9 @@ public class UserTest {
     private Location location ;
 
     @BeforeEach
-    void setUp (){
+    void setUp () throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         location = new Location("Avellaneda","Buenos Aires",10,false);
-        project = new Project("Conectar Igualdad", location, LocalDate.of(2020,12,11),  100, 1000);
+        project = new Project("Conectar Igualdad", location, LocalDate.parse("2020-12-11"),  100, 1000);
         user  = new User("Federico","pepito","Fefi","fedeericosanchez18@gmail.com");
     }
 
@@ -24,13 +26,13 @@ public class UserTest {
     void gettersAndSettersIsTested(){
         user.setName("mauro");
         user.setNick("mem");
-        user.setPass("123");
+        user.setPassword("123");
         user.setEmail("mem@gmail.com");
         user.setDonatedMoney(1000);
         user.setMyPoints(10);
         assertEquals(user.getName(),"mauro");
         assertEquals(user.getNick(),"mem");
-        assertEquals(user.getPass(),"123");
+        assertEquals(user.getPassword(),"123");
         assertEquals(user.getEmail(),"mem@gmail.com");
         assertEquals(user.getDonatedMoney(),1000);
         assertEquals(user.getMyPoints(),10);

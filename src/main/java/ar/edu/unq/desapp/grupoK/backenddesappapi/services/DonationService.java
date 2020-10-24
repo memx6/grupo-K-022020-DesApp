@@ -26,4 +26,5 @@ public class DonationService {
     public List<Donation> findAll() {
         return this.donationRepository.findAll();
     }
+
 }

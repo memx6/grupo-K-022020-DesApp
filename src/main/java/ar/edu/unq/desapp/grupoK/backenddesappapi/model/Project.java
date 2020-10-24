@@ -4,9 +4,13 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.joda.time.LocalDate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,19 +21,24 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String proyectName;
+    @NotBlank(message = "Name is mandatory")
+    @Column(unique = true)
+    private String projectName;
 
     @OneToOne(cascade=CascadeType.ALL)
     private Location location;
 
     private LocalDate dateStart;
+    @Future(message = "The Project end date must be after the start date")
     private LocalDate dateEnd ;
+    @NotNull(message = "Minimum Closing Percentage is mandatory")
     private Integer minimumClosingPercentage = 100;
     private Integer factor = 1000; // Cambiar factor por Double para poder poner porcentajes parciales
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    @JsonIgnore
     private List<Donation> donations;
 
     public boolean visibility = true;
@@ -37,7 +46,7 @@ public class Project {
     public Project() {}
 
     public Project(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor){
-            this.proyectName = name;
+            this.projectName = name;
             this.donations = new ArrayList<>();
             this.location = location;
             this.dateStart = LocalDate.now();
@@ -56,7 +65,15 @@ public class Project {
     }
 
     public String getName(){
-        return this.proyectName;
+        return this.projectName;
+    }
+
+    public boolean getVisibility(){
+        return this.visibility;
+    }
+
+    public void setVisibility(boolean bool){
+        this.visibility = bool;
     }
 
     public void setFactor (Integer newFactor) throws FactorInvalid {
@@ -115,11 +132,12 @@ public class Project {
         return moneyReceiveForProject;
     }
 
-    public List<Donation> allDonations(){
+    public List<Donation> getDonations(){
         return this.donations;
     }
 
     public void downProject(){
+        location.setConnectivityStat(true);
         this.visibility = false;
     }
 
