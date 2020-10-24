@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,11 +23,27 @@ public class ProjectService {
         return this.projectRepository.save(model);
     }
 
-    public Project findByID(Integer id) {
+    public Project findById(Integer id) {
         return this.projectRepository.findById(id).get();
     }
 
     public List<Project> findAll() {
         return this.projectRepository.findAll();
     }
+
+    public List<Project> openProjects() {
+        return projectRepository.findByVisibilityTrue();
+    }
+
+    public List<Project> projectNearingCompletion(){
+        List<Project> projectsOpen = this.openProjects();
+        List<Project> projectsNearing = projectRepository.findByDateEndBetween(LocalDate.now());
+        projectsOpen.removeAll(projectsNearing);
+        projectsNearing.addAll(projectsOpen);
+        return projectsNearing;
+    }
+
+    //public List<Project> top10Donations() {
+      //  return projectRepository.findTop10ByDonations();
+    //}
 }

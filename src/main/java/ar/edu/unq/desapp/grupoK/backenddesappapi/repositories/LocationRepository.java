@@ -16,4 +16,8 @@ public interface LocationRepository extends CrudRepository<Location, Integer> {
 
     List<Location> findAll();
 
+    Location findByName(String name);
+
+    //List<Location> findTop10ByLocations();
 }
+

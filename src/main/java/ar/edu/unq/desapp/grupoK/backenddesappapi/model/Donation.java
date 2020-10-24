@@ -1,9 +1,12 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "donation")
@@ -12,15 +15,19 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
+    @JsonIgnore
     private Project project;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     private String description;
+    @NotNull(message = "Money is mandatory")
+    @Min(10)
     private Integer money;
     private LocalDate dateTrx;
 
@@ -94,6 +101,6 @@ public class Donation {
     }
 
     public Integer donationsPerMonthCalender(){
-        return this.getUserDonator().getDonatedProyects().stream().filter(donation -> donation.getDonationMonth().getMonth() == LocalDate.now().getMonth()).toArray().length;
+        return this.getUserDonator().getDonatedProyects().stream().filter(donation -> donation.getDonationMonth().getMonthOfYear() == LocalDate.now().getMonthOfYear()).toArray().length;
     }
 }

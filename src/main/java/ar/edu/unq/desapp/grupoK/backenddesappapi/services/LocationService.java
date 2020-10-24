@@ -19,11 +19,20 @@ public class LocationService {
         return this.locationRepository.save(model);
     }
 
-    public Location findByID(Integer id) {
+    public Location findById(Integer id) {
         return this.locationRepository.findById(id).get();
+    }
+
+    public Location findByName(String name) {
+        return this.locationRepository.findByName(name);
     }
 
     public List<Location> findAll() {
         return this.locationRepository.findAll();
     }
+
+    /*public List<Location> topThe10LeastChosenLocations() {
+        return locationRepository.findTop10ByLocations();
+    }*/
+
 }

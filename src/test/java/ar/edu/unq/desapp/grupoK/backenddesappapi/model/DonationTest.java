@@ -1,10 +1,13 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,10 +22,10 @@ class DonationTest {
     private ArrayList<Donation>donations = new ArrayList<>();
 
     @BeforeEach
-    void setUp () {
+    void setUp () throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         Location location = mock(Location.class);
         when(location.getPopulation()).thenReturn(500);
-        project = new Project("avellaneda", location, LocalDate.of(2020,12,11), 100, 1000);
+        project = new Project("avellaneda", location,  LocalDate.parse("2020-12-11"), 100, 1000);
         user =  new User("Federico","pepito","Icardi","fedeericosanchez18@gmail.com");
 
         donation = new Donation(project, user,"donation", 500 );
@@ -36,7 +39,7 @@ class DonationTest {
 
     @Test
     void donationMonthInMonthCalender() {
-        assertEquals(donation.getDonationMonth().getMonth() , LocalDate.now().getMonth());
+        assertEquals(donation.getDonationMonth().monthOfYear() , LocalDate.now().monthOfYear());
     }
     @Test
     void getDonationTested() {

@@ -24,8 +24,18 @@ public class ProjectController {
         return projectService.findAll();
     }
 
+    @GetMapping("/projects_open")
+    public List<Project> projectOpen() {
+        return projectService.openProjects();
+    }
+
+    @GetMapping("/project_nearing")
+    public List<Project> projectNearingCompletion() {
+        return projectService.projectNearingCompletion();
+    }
+
     @GetMapping("/projects/{id}")
     public Project getProject(@PathVariable("id") Integer id) {
-        return projectService.findByID(id);
+        return projectService.findById(id);
     }
 }
