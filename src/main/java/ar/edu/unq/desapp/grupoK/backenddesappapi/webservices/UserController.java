@@ -37,7 +37,8 @@ public class UserController {
         User newUser = userService.create(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
-
+    
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<User> login(@Valid @RequestBody DTOUser dtoUser) throws ErrorLoginUser {
         User userLogin = userService.login(dtoUser);
