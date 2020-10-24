@@ -31,7 +31,7 @@ public class UserController {
     public User getUser(@PathVariable("id") Integer id) {
         return userService.userById(id);
     }
-
+    @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<User> create(@Valid @RequestBody User user) throws ErrorExistingUser {
         User newUser = userService.create(user);
