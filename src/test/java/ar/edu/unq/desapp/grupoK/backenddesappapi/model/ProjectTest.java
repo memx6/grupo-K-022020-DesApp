@@ -39,6 +39,7 @@ public class ProjectTest {
         assertEquals(project.getName(), "avellaneda");
         assertEquals(project.getMinimumClosingPercentage(), 100);
         assertEquals(project.getFactor(), 1000);
+        assertEquals(project.getMoneyReceiveForProject(), 0);
         assertEquals(project.getLocation(), location);
         project.setVisibility(true);
         assertEquals(project.getVisibility(), true);

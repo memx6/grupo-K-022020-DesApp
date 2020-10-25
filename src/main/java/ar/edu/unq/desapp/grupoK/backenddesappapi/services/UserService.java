@@ -1,8 +1,14 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.services;
 
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Donation;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.DonationRepository;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.ProjectRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorExistingUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
@@ -18,6 +24,12 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DonationRepository donationRepository;
+
+    @Autowired
+    private ProjectService projectService;
 
     @Transactional
     public User save(User model) {
@@ -50,6 +62,16 @@ public class UserService {
             throw new ErrorLoginUser();
         }
         return userLogin;
+    }
+
+    public Donation donate(DTODonation dtoDonation) throws InvalidDonatedMoney {
+        User donorUser = userRepository.findById(dtoDonation.getIdUser()).get();
+        Project project = projectService.findById(dtoDonation.getIdProject());
+
+        Donation donation = donorUser.donate(project, dtoDonation.getMoneyDonated(), dtoDonation.getDescription());
+        donationRepository.save(donation);
+
+        return donation;
     }
 
     public User userProfile(Integer id) {

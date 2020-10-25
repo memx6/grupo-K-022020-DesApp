@@ -1,11 +1,12 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.repositories;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
+import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +20,14 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
     List<Project> findByVisibilityTrue();
 
-    List<Project> findByDateEndBetween(LocalDate dateStart, LocalDate dateEnd);
+    @Query(value= "SELECT TOP 10 (PROJECT.ID) , PROJECT.NAME , COUNT(DONATION.ID) AS CANTIDAD FROM project " +
+            "INNER JOIN donation ON project.id= donation.project ORDER BY  CANTIDAD DESC",
+            nativeQuery = true)
+    List<Project> findByDateEndBetween(LocalDate dateStart);
 
-    default List<Project> findByDateEndBetween(LocalDate givenDate) {
-        return findByDateEndBetween(givenDate, givenDate);
-    }
-
-    //List<Project> findTop10ByDonations();
+    @Query(value= "SELECT TOP 10 (PROJECT.ID) , PROJECT.NAME , COUNT(DONATION.ID) AS CANTIDAD FROM project " +
+            "INNER JOIN donation ON project.id= donation.project ORDER BY  CANTIDAD DESC",
+            nativeQuery = true)
+    List<Project> findTop10ByDonations();
 
 }

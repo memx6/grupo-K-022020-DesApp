@@ -2,11 +2,11 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.services;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.ProjectRepository;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,7 +43,7 @@ public class ProjectService {
         return projectsNearing;
     }
 
-    //public List<Project> top10Donations() {
-      //  return projectRepository.findTop10ByDonations();
-    //}
+    public List<Project> top10Donations() {
+        return projectRepository.findTop10ByDonations();
+    }
 }

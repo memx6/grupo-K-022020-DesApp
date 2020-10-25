@@ -78,11 +78,12 @@ public class User {
         this.donatedMoney = donatedMoney;
     }
 
-    public void donate (Project project, Integer money, String description) throws InvalidDonatedMoney {
+    public Donation donate (Project project, Integer money, String description) throws InvalidDonatedMoney {
         Donation donation = new Donation(project,this,description,money);
         donation.executeDonation();
         this.donatedMoney += money;
         this.donatedProyects.add(donation);
+        return donation;
     }
 
     public void giveMePoints(Integer points) {
