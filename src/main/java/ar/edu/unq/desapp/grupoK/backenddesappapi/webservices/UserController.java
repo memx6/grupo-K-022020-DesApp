@@ -29,22 +29,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @GetMapping("/users")
     public List<User> allUsers() {
         return userService.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
         return userService.userById(id);
     }
 
+    @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<User> create(@Valid @RequestBody User user) throws ErrorExistingUser {
         User newUser = userService.create(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
-
+    
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<User> login(@Valid @RequestBody DTOUser dtoUser) throws ErrorLoginUser {
         User userLogin = userService.login(dtoUser);
@@ -57,12 +61,13 @@ public class UserController {
         Donation donation = userService.donate(dtoDonation);
         return new ResponseEntity<>(donation, HttpStatus.ACCEPTED);
     }
-
+  
     @GetMapping("/profile/{id}")
     public User userProfile(@PathVariable(value = "id") Integer id) {
         return userService.userProfile(id);
     }
 
+    @CrossOrigin
     @GetMapping("/pro/{id}")
     public List<User> usersDonates(@PathVariable(value = "id") Integer id) {
         return userService.findByDonationsForProjectFinished(id);
