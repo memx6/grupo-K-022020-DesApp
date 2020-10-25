@@ -30,7 +30,8 @@ public class ProjectTest {
         when(location.getConnectivityStat()).thenReturn(false);
         user = mock(User.class);
         project = new Project("avellaneda", location, LocalDate.parse("2020-12-11"),100, 1000);
-        donation = new Donation(project,user,"Suerte",1000);
+        donation = new Donation(project,user,"Suerte" +
+                "",1000);
     }
 
     @Test

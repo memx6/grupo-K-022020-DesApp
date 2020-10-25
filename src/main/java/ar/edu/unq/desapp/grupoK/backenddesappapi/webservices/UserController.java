@@ -22,15 +22,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @GetMapping("/users")
     public List<User> allUsers() {
         return userService.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
         return userService.userById(id);
     }
+
     @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<User> create(@Valid @RequestBody User user) throws ErrorExistingUser {
@@ -45,11 +48,13 @@ public class UserController {
         return new ResponseEntity<>(userLogin, HttpStatus.ACCEPTED);
     }
 
+    @CrossOrigin
     @GetMapping("/profile/{id}")
     public User userProfile(@PathVariable(value = "id") Integer id) {
         return userService.userProfile(id);
     }
 
+    @CrossOrigin
     @GetMapping("/pro/{id}")
     public List<User> usersDonates(@PathVariable(value = "id") Integer id) {
         return userService.findByDonationsForProjectFinished(id);

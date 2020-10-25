@@ -28,12 +28,14 @@ public class UserAdministratorController {
     @Autowired
     private UserAdministratorService userAdministratorService;
 
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<UserAdministrator> login(@Valid @RequestBody UserAdministrator admin) throws ErrorLoginUser {
         UserAdministrator adminLogin = userAdministratorService.login(admin.getEmail(), admin.getPassword());
         return new ResponseEntity<>(adminLogin, HttpStatus.ACCEPTED);
     }
 
+    @CrossOrigin
     @PostMapping("/create/project/")
     @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class })
     public ResponseEntity<Project> createProject(@Valid @RequestBody DTOProject dtoProject) throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
@@ -41,18 +43,21 @@ public class UserAdministratorController {
         return new ResponseEntity<>(newProject, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @PutMapping("/finish_project")
     public ResponseEntity<Project> finishCollection(@Valid @RequestBody DTOProject dtoProject) {
         Project projectClosed = userAdministratorService.finishProject(dtoProject);
         return new ResponseEntity<>(projectClosed, HttpStatus.OK);
     }
 
+    @CrossOrigin
     // Pongo get para ver los envios pero manejalo como te parezca
     @GetMapping("/top_10_donations")
     public void top10() {
         userAdministratorService.top10Donations();
     }
 
+    @CrossOrigin
     @GetMapping("/top10_locations")
     public void top10Location() {
         userAdministratorService.topThe10LeastChosenLocations();
