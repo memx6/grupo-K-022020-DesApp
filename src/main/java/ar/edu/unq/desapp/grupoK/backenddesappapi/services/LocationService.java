@@ -31,8 +31,7 @@ public class LocationService {
         return this.locationRepository.findAll();
     }
 
-    /*public List<Location> topThe10LeastChosenLocations() {
+    public List<Location> topThe10LeastChosenLocations() {
         return locationRepository.findTop10ByLocations();
-    }*/
-
+    }
 }

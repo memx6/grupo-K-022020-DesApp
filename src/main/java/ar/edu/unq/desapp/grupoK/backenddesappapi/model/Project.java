@@ -68,6 +68,8 @@ public class Project {
         return this.projectName;
     }
 
+    public Integer getMoneyReceiveForProject() { return this.moneyReceiveForProject;}
+
     public boolean getVisibility(){
         return this.visibility;
     }

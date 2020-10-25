@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoK.backenddesappapi;
+package ar.edu.unq.desapp.grupoK.backenddesappapi.webservices;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

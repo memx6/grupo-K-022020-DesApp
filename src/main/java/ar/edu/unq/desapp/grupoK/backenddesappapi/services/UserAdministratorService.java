@@ -67,19 +67,19 @@ public class UserAdministratorService {
         admin.closeProject(project);
  //     Project projectClosed = projectService.save(project); este proyecto finalizado se le envia a los usuarios que donaron
 
- //     List<User> usersdonors = userService.findByDonationsForProjectFinished(dtoProject.getIdProject());
+        List<User> usersdonors = userService.findByDonationsForProjectFinished(dtoProject.getIdProject());
  //     acá enviaria email de notificacion
         return project;
     }
 
     public void top10Donations() {
-        //List<Project> projects = projectService.top10Donations();
+        List<Project> projects = projectService.top10Donations();
         List<User> users = userService.findAll();
         //       acá enviaria email de notificacion diaria
     }
 
     public void topThe10LeastChosenLocations() {
-      //  List<Location> locations = locationService.topThe10LeastChosenLocations();
+        List<Location> locations = locationService.topThe10LeastChosenLocations();
         List<User> users = userService.findAll();
         //       acá enviaria email de notificacion diaria
     }

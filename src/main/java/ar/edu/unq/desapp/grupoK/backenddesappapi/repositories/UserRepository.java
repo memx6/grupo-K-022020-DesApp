@@ -19,10 +19,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findByEmail(String email);
 
-    @Query(value = "SELECT us.* FROM user us "
-            +"INNER JOIN (SELECT dona.nickname FROM donation dona "
-            +"INNER JOIN project p ON d.project_id = ?1) dp "
-            +"ON don.nickname = dp.nickname",
+    @Query(value = "SELECT DISTINC(USER) from donation " +
+            "INNER JOIN project ON donation.project = project.id where project.dateEnd < GETDATE()",
             nativeQuery = true)
     List<User> findByDonationsForProjectFinished(Integer idProject);
 
