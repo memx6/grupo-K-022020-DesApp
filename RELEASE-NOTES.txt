@@ -1,3 +1,23 @@
+---------------------------------------------------------------------
+TAG ENTREGA 2.0
+---------------------------------------------------------------------
+NEW FEATURES:
+ * Using HSQLDB to persist data with H2
+ * Backend Layout Implementation (Layers: Model, Repositories, Services, Webservices)
+ * Register update and user login
+ * User profile
+ * Admin user creates projects
+ * Donation by the user
+ * Integration Swagger
+ * Presentation tier implementation with(I18n- US_ES)
+ * Fake data to test the application
+
+NOTES:
+* - User money for testing purposes is unlimited
+
+KNOWN ISSUES:
+* -
+
 
 ---------------------------------------------------------------------
 TAG ENTREGA 1.0

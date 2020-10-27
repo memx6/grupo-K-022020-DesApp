@@ -8,7 +8,6 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.DonationRepository;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.ProjectRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorExistingUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
@@ -42,6 +41,10 @@ public class UserService {
 
     public List<User> findAll() {
         return this.userRepository.findAll();
+    }
+
+    public User findByName(String name) {
+        return this.userRepository.findByName(name);
     }
 
     public User create(User user) throws ErrorExistingUser {
@@ -79,7 +82,16 @@ public class UserService {
         return user;
     }
 
-    public List<User> findByDonationsForProjectFinished(Integer idProject) {
-        return this.userRepository.findByDonationsForProjectFinished(idProject);
+    public List<User> findByDonationsForProject(Integer idProject) {
+        return this.userRepository.findByDonationsForProject(idProject);
+    }
+
+    public void update(User user) {
+        User userRecovered = userRepository.findById(user.getId()).get();
+        userRecovered.setName(user.getName());
+        userRecovered.setNick(user.getNick());
+        userRecovered.setPassword(user.getPassword());
+        userRecovered.setEmail(user.getEmail());
+        userRepository.save(userRecovered);
     }
 }

@@ -17,11 +17,13 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     List<User> findAll();
 
+    User findByName(String name);
+
     User findByEmail(String email);
 
-    @Query(value = "SELECT DISTINC(USER) from donation " +
-            "INNER JOIN project ON donation.project = project.id where project.dateEnd < GETDATE()",
+    @Query(value = "SELECT DISTINCT (user_id) from donation " +
+            "INNER JOIN project ON donation.project_id = ?1",
             nativeQuery = true)
-    List<User> findByDonationsForProjectFinished(Integer idProject);
+    List<User> findByDonationsForProject(Integer idProject);
 
 }

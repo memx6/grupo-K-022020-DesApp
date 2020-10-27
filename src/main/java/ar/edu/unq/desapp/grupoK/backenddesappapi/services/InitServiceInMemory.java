@@ -56,7 +56,7 @@ public class InitServiceInMemory {
                 .withPopulation(1000)
                 .withConnectivityState(true)
                 .build();
-        Project project1 = ProjectBuilder.projectwithName("ProyectoAvellaneda")
+        Project projectAvellaneda = ProjectBuilder.projectwithName("Proyecto Avellaneda")
                 .withFactor(1000)
                 .withDateEnd(LocalDate.parse("2020-12-11"))
                 .withLocation(avellaneda)
@@ -67,14 +67,50 @@ public class InitServiceInMemory {
                 .withPopulation(1000)
                 .withConnectivityState(false)
                 .build();
-        Project project2 = ProjectBuilder.projectwithName("ProyectoQuilmes")
+        Project projectQuilmes = ProjectBuilder.projectwithName("Proyecto Quilmes")
                 .withFactor(1000)
-                .withDateEnd(LocalDate.parse("2022-12-11"))
+                .withDateEnd(LocalDate.parse("2022-11-11"))
                 .withLocation(quilmes)
                 .build();
 
-        projectService.save(project1);
-        projectService.save(project2);
+        Location rioCuarto = LocationBuilder.LocationwithName("Rio Cuarto")
+                .withProvince("Cordoba")
+                .withPopulation(2000)
+                .withConnectivityState(false)
+                .build();
+        Project projectCordoba = ProjectBuilder.projectwithName("Proyecto Rio Cuarto")
+                .withFactor(1000)
+                .withDateEnd(LocalDate.parse("2021-08-11"))
+                .withLocation(rioCuarto)
+                .build();
+
+        Location calafate = LocationBuilder.LocationwithName("Calafate")
+                .withProvince("Santa Cruz")
+                .withPopulation(1700)
+                .withConnectivityState(false)
+                .build();
+        Project projectCalafate = ProjectBuilder.projectwithName("Proyecto Calafate")
+                .withFactor(1000)
+                .withDateEnd(LocalDate.parse("2021-4-11"))
+                .withLocation(calafate)
+                .build();
+
+        Location ushuaia = LocationBuilder.LocationwithName("Ushuaia")
+                .withProvince("Tierra del Fuego")
+                .withPopulation(1500)
+                .withConnectivityState(false)
+                .build();
+        Project projectUshuaia = ProjectBuilder.projectwithName("Proyecto Ushuaia")
+                .withFactor(1000)
+                .withDateEnd(LocalDate.parse("2022-12-11"))
+                .withLocation(ushuaia)
+                .build();
+
+        projectService.save(projectAvellaneda);
+        projectService.save(projectQuilmes);
+        projectService.save(projectCordoba);
+        projectService.save(projectCalafate);
+        projectService.save(projectUshuaia);
     }
 
     private void fireInitialDataUser() {
@@ -88,6 +124,33 @@ public class InitServiceInMemory {
                 .withPass("4321")
                 .withEmail("fms@gmail.com")
                 .build();
+        User german = UserBuilder.userwithName("German")
+                .withNick("mang")
+                .withPass("1234")
+                .withEmail("german@gmail.com")
+                .build();
+        User jose = UserBuilder.userwithName("Jose")
+                .withNick("jose")
+                .withPass("4321")
+                .withEmail("josesito@gmail.com")
+                .build();
+        User pepita = UserBuilder.userwithName("Pepita")
+                .withNick("pepi")
+                .withPass("1234")
+                .withEmail("pepi@gmail.com")
+                .build();
+        User pepon = UserBuilder.userwithName("Pepon")
+                .withNick("pepo")
+                .withPass("4321")
+                .withEmail("pepon@gmail.com")
+                .build();
+
+        User fidel = UserBuilder.userwithName("Fidel")
+                .withNick("Fidel")
+                .withPass("haskell")
+                .withEmail("foldr@gmail.com")
+                .build();
+
         UserAdministrator adm = new UserAdministrator ();
         adm.setName("Admin");
         adm.setPassword("4321");
@@ -97,17 +160,79 @@ public class InitServiceInMemory {
         userAdministratorService.save(adm);
         userService.save(mauro);
         userService.save(fede);
+        userService.save(german);
+        userService.save(jose);
+        userService.save(pepita);
+        userService.save(pepon);
+        userService.save(fidel);
     }
 
     private void fireInitialDataDonation() {
-        Donation donation = DonationBuilder.donation()
+        Donation donation1 = DonationBuilder.donation()
                 .withProject(projectService.findAll().get(0))
-                .withUser(userService.findAll().get(0))
-                .withDescription("AvellanedaDonation")
+                .withUser(userService.findByName("Mauro"))
+                .withDescription("Avellaneda Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2020-12-09"))
+                .build();
+
+        Donation donation2 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(0))
+                .withUser(userService.findByName("Fede"))
+                .withDescription("Avellaneda Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2022-11-08"))
+                .build();
+        Donation donation3 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(0))
+                .withUser(userService.findByName("German"))
+                .withDescription("Avellaneda Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2020-12-10"))
+                .build();
+        Donation donation4 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(1))
+                .withUser(userService.findByName("Mauro"))
+                .withDescription("Quilmes Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2021-12-11"))
+                .build();
+        Donation donation5 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(1))
+                .withUser(userService.findByName("Pepita"))
+                .withDescription("Quilmes Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2021-12-11"))
+                .build();
+        Donation donation6 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(4))
+                .withUser(userService.findByName("Fede"))
+                .withDescription("Calafate Donation")
                 .withMoney(1000)
                 .withDate(LocalDate.parse("2020-12-11"))
                 .build();
+        Donation donation7 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(4))
+                .withUser(userService.findByName("Jose"))
+                .withDescription("Calafate Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2020-08-11"))
+                .build();
+        Donation donation8 = DonationBuilder.donation()
+                .withProject(projectService.findAll().get(3))
+                .withUser(userService.findByName("Pepon"))
+                .withDescription("Rio Cuarto Donation")
+                .withMoney(1000)
+                .withDate(LocalDate.parse("2021-04-11"))
+                .build();
 
-        donationService.save(donation);
+        donationService.save(donation1);
+        donationService.save(donation2);
+        donationService.save(donation3);
+        donationService.save(donation4);
+        donationService.save(donation5);
+        donationService.save(donation6);
+        donationService.save(donation7);
+        donationService.save(donation8);
     }
 }

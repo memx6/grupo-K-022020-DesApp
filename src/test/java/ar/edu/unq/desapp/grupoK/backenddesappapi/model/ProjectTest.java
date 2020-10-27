@@ -27,7 +27,7 @@ public class ProjectTest {
         location = mock(Location.class);
         when(location.getPopulation()).thenReturn(1500);
         when(location.getProvince()).thenReturn("Buenos Aires");
-        when(location.getConnectivityStat()).thenReturn(false);
+        when(location.getConnectivityState()).thenReturn(false);
         user = mock(User.class);
         project = new Project("avellaneda", location, LocalDate.parse("2020-12-11"),100, 1000);
         donation = new Donation(project,user,"Suerte" +
@@ -43,6 +43,7 @@ public class ProjectTest {
         assertEquals(project.getLocation(), location);
         project.setVisibility(true);
         assertEquals(project.getVisibility(), true);
+        assertEquals(project.getPercentageCompleted(), 0);
         assertEquals(project.getDateEnd(), LocalDate.parse("2020-12-11"));
     }
 
@@ -123,9 +124,9 @@ public class ProjectTest {
     public void testUpAndDownProject() {
         assertEquals(project.activeProject(), true);
         project.downProject();
-        when(location.getConnectivityStat()).thenReturn(true);
+        when(location.getConnectivityState()).thenReturn(true);
         assertEquals(project.activeProject(), false);
-        assertEquals(project.getLocation().getConnectivityStat(), true);
+        assertEquals(project.getLocation().getConnectivityState(), true);
 
     }
 }

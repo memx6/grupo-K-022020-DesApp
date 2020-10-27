@@ -1,8 +1,10 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.webservices;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.UserAdministrator;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -45,13 +48,12 @@ public class UserAdministratorController {
 
     @CrossOrigin
     @PutMapping("/finish_project")
-    public ResponseEntity<Project> finishCollection(@Valid @RequestBody DTOProject dtoProject) {
+    public ResponseEntity<Project> finishCollection(@Valid @RequestBody DTOProject dtoProject) throws CantFinishProject {
         Project projectClosed = userAdministratorService.finishProject(dtoProject);
         return new ResponseEntity<>(projectClosed, HttpStatus.OK);
     }
 
     @CrossOrigin
-    // Pongo get para ver los envios pero manejalo como te parezca
     @GetMapping("/top_10_donations")
     public void top10() {
         userAdministratorService.top10Donations();
@@ -59,10 +61,10 @@ public class UserAdministratorController {
 
     @CrossOrigin
     @GetMapping("/top10_locations")
-    public void top10Location() {
-        userAdministratorService.topThe10LeastChosenLocations();
+    public List<Location> top10Location() {
+        List<Location> locations = userAdministratorService.topThe10LeastChosenLocations();
+        return locations;
     }
-
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

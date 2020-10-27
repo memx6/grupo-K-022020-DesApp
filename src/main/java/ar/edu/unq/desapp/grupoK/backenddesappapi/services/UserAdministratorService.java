@@ -5,6 +5,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.UserAdministrator;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
@@ -60,27 +61,24 @@ public class UserAdministratorService {
         return newProject;
     }
 
-    public Project finishProject(DTOProject dtoProject) {
+    public Project finishProject(DTOProject dtoProject) throws CantFinishProject {
         UserAdministrator admin = admRepository.findById(dtoProject.getIdUserAdmin()).get();
         Project project = projectService.findById(dtoProject.getIdProject());
-
         admin.closeProject(project);
- //     Project projectClosed = projectService.save(project); este proyecto finalizado se le envia a los usuarios que donaron
-
-        List<User> usersdonors = userService.findByDonationsForProjectFinished(dtoProject.getIdProject());
- //     acá enviaria email de notificacion
-        return project;
+        Project projectClosed = projectService.save(project);
+        return projectClosed;
     }
 
     public void top10Donations() {
         List<Project> projects = projectService.top10Donations();
         List<User> users = userService.findAll();
-        //       acá enviaria email de notificacion diaria
+        //acá enviaria email de notificacion diaria
     }
 
-    public void topThe10LeastChosenLocations() {
+    public List<Location> topThe10LeastChosenLocations() {
         List<Location> locations = locationService.topThe10LeastChosenLocations();
         List<User> users = userService.findAll();
-        //       acá enviaria email de notificacion diaria
+        //acá enviaria email de notificacion diaria
+        return locations;
     }
 }

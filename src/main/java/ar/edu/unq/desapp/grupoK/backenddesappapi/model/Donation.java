@@ -41,6 +41,7 @@ public class Donation {
         this.dateTrx = LocalDate.now();
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -62,6 +63,14 @@ public class Donation {
 
     public Integer getMoneyDonate() {
         return this.money;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Project getProject() {
+        return project;
     }
 
     public Integer getPoints() {

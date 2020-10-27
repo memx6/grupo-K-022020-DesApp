@@ -20,8 +20,9 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
     List<Project> findByVisibilityTrue();
 
-    @Query(value= "SELECT TOP 10 (PROJECT.ID) , PROJECT.NAME , COUNT(DONATION.ID) AS CANTIDAD FROM project " +
-            "INNER JOIN donation ON project.id= donation.project ORDER BY  CANTIDAD DESC",
+    @Query(value= "SELECT * FROM project p where DAY(p.date_end) >= DAY(?1)"
+            + "AND MONTH(p.date_end) = MONTH(?1)"
+            + "AND YEAR(p.date_end) = YEAR(?1)",
             nativeQuery = true)
     List<Project> findByDateEndBetween(LocalDate dateStart);
 
