@@ -46,10 +46,10 @@ public class Location {
     public Integer getPopulation() {
         return this.population;
     }
-    public boolean getConnectivityStat() {
+    public boolean getConnectivityState() {
         return this.connectivityState;
     }
-    public void setConnectivityStat(boolean state) {
+    public void setConnectivityState(boolean state) {
         this.connectivityState = state;
     }
 }

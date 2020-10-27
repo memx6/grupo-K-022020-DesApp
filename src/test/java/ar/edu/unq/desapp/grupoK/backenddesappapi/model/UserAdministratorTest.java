@@ -1,9 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.*;
 import org.joda.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,7 +69,7 @@ public class UserAdministratorTest {
     }
 
     @Test
-    void closeProject() throws InvalidDonatedMoney {
+    void closeProject() throws InvalidDonatedMoney, CantFinishProject {
         user1.donate(project1,10000, "I donate the total to finish the project");
         userAdm.closeProject(project1);
         assertTrue(!project1.visibility);

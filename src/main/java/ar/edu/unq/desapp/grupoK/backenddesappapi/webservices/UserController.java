@@ -56,12 +56,21 @@ public class UserController {
     }
 
     @CrossOrigin
+    @PutMapping("/update_user")
+    public ResponseEntity<String> update_user(@Valid @RequestBody User user) {
+        userService.update(user);
+        return ResponseEntity.status(HttpStatus.OK).body("Your personal data has been updated successfully");
+
+    }
+
+    @CrossOrigin
     @PostMapping("/donate")
     public ResponseEntity<Donation> donate(@Valid @RequestBody DTODonation dtoDonation) throws InvalidDonatedMoney {
         Donation donation = userService.donate(dtoDonation);
         return new ResponseEntity<>(donation, HttpStatus.ACCEPTED);
     }
-  
+
+    @CrossOrigin
     @GetMapping("/profile/{id}")
     public User userProfile(@PathVariable(value = "id") Integer id) {
         return userService.userProfile(id);
@@ -70,7 +79,7 @@ public class UserController {
     @CrossOrigin
     @GetMapping("/pro/{id}")
     public List<User> usersDonates(@PathVariable(value = "id") Integer id) {
-        return userService.findByDonationsForProjectFinished(id);
+        return userService.findByDonationsForProject(id);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

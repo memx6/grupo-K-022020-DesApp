@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
@@ -37,10 +38,12 @@ public class UserAdministrator extends User {
         return new Project(name, location, dateEnd, percentageMinimum, factor);
     }
 
-    public void closeProject(Project project) {
+    public void closeProject(Project project) throws CantFinishProject {
         if(this.projectCanBeClosed(project)){
             project.downProject();
             project.getDonations().forEach(donation -> this.sendMailForDonated(project, donation.getUserDonator()));
+        }else{
+            throw new CantFinishProject();
         }
     }
 
@@ -53,7 +56,7 @@ public class UserAdministrator extends User {
     }
 
     public boolean minimumPercentageCompleted(Project project) {
-        return ((project.moneyReceiveForProject() / project.moneyNeededForProject())* 100) >= project.getMinimumClosingPercentage();
+        return project.getPercentageCompleted() >= project.getMinimumClosingPercentage();
     }
 
     private void sendMailForDonated(Project project , User user){

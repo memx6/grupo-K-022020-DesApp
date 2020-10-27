@@ -33,7 +33,7 @@ public class Project {
     private LocalDate dateEnd ;
     @NotNull(message = "Minimum Closing Percentage is mandatory")
     private Integer minimumClosingPercentage = 100;
-    private Integer factor = 1000; // Cambiar factor por Double para poder poner porcentajes parciales
+    private Integer factor = 1000;
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
@@ -119,8 +119,8 @@ public class Project {
     }
 
     public void receiveDonation(Donation donation) throws InvalidDonatedMoney {
-        this.donations.add(donation);
         this.addMoney(donation.getMoneyDonate());
+        this.donations.add(donation);
     }
 
     public void addMoney(Integer money) throws InvalidDonatedMoney {
@@ -139,11 +139,15 @@ public class Project {
     }
 
     public void downProject(){
-        location.setConnectivityStat(true);
+        location.setConnectivityState(true);
         this.visibility = false;
     }
 
     public boolean activeProject(){
         return this.visibility;
+    }
+
+    public Integer getPercentageCompleted(){
+        return ((this.moneyReceiveForProject() / this.moneyNeededForProject())* 100);
     }
 }

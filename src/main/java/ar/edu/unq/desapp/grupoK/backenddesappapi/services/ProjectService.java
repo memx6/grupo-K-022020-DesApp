@@ -15,9 +15,6 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Autowired
-    private LocationService locationService;
-
     @Transactional
     public Project save(Project model) {
         return this.projectRepository.save(model);
