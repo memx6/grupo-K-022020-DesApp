@@ -9,14 +9,14 @@ NEW FEATURES:
  * Admin user creates projects
  * Donation by the user
  * Integration Swagger
- * Presentation tier implementation with(I18n- US_ES)
+ 
  * Fake data to test the application
 
 NOTES:
 * - User money for testing purposes is unlimited
 
 KNOWN ISSUES:
-* -
+* Presentation tier implementation with(I18n- US_ES)* -
 
 
 ---------------------------------------------------------------------
