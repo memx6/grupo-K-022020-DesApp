@@ -1,9 +1,6 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.services;
 
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.UserAdministrator;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.*;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
@@ -17,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserAdministratorService {
@@ -32,6 +30,12 @@ public class UserAdministratorService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DonationService donationService;
+
+    @Autowired
+    private EmailService emailService;
 
     @Transactional
     public UserAdministrator save(UserAdministrator model) {
@@ -66,19 +70,29 @@ public class UserAdministratorService {
         Project project = projectService.findById(dtoProject.getIdProject());
         admin.closeProject(project);
         Project projectClosed = projectService.save(project);
+        List<User> users = findUsersByProject(dtoProject);
+        emailService.sendMailForDonated(users, project);
         return projectClosed;
     }
 
-    public void top10Donations() {
-        List<Project> projects = projectService.top10Donations();
-        List<User> users = userService.findAll();
-        //acá enviaria email de notificacion diaria
+    private List<User> findUsersByProject(DTOProject dtoProject) {
+        return donationService.findByProject(dtoProject.getIdProject())
+                .stream()
+                .map(Donation::getUser)
+                .collect(Collectors.toList());
     }
 
-    public List<Location> topThe10LeastChosenLocations() {
-        List<Location> locations = locationService.topThe10LeastChosenLocations();
+    public List<String> top10Donations() {
+        List<String> projects = projectService.top10Donations();
         List<User> users = userService.findAll();
-        //acá enviaria email de notificacion diaria
+        emailService.sendTop10Donations(projects, users);
+        return projects;
+    }
+
+    public List<String> topThe10LeastChosenLocations() {
+        List<String> locations = projectService.topThe10LeastChosenLocations();
+        List<User> users = userService.findAll();
+        emailService.sendTopThe10LeastChosenLocations(locations, users);
         return locations;
     }
 }

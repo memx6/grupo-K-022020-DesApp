@@ -55,15 +55,16 @@ public class UserAdministratorController {
 
     @CrossOrigin
     @GetMapping("/top_10_donations")
-    public void top10() {
-        userAdministratorService.top10Donations();
+    public ResponseEntity<List<String>> top10Donations() {
+        List<String> donations =  userAdministratorService.top10Donations();
+        return new ResponseEntity<>(donations, HttpStatus.OK);
     }
 
     @CrossOrigin
     @GetMapping("/top10_locations")
-    public List<Location> top10Location() {
-        List<Location> locations = userAdministratorService.topThe10LeastChosenLocations();
-        return locations;
+    public ResponseEntity<List<String>> top10Location() {
+        List<String> locations = userAdministratorService.topThe10LeastChosenLocations();
+        return new ResponseEntity<>(locations, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

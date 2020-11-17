@@ -8,8 +8,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -72,6 +71,6 @@ public class UserAdministratorTest {
     void closeProject() throws InvalidDonatedMoney, CantFinishProject {
         user1.donate(project1,10000, "I donate the total to finish the project");
         userAdm.closeProject(project1);
-        assertTrue(!project1.visibility);
+        assertFalse(project1.visibility);
     }
 }

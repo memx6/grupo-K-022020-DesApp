@@ -14,4 +14,6 @@ public interface DonationRepository extends CrudRepository<Donation, Integer> {
     Optional<Donation> findById(Integer id);
 
     List<Donation> findAll();
+
+    List<Donation> findByProject(Integer idProject);
 }
