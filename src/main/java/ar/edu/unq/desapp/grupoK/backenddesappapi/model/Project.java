@@ -51,7 +51,7 @@ public class Project {
             this.location = location;
             this.dateStart = LocalDate.now();
             this.dateEnd = dateEnd;
-            this.minimumClosingPercentage = (percentageMinimum >= 50 && percentageMinimum <= 100) ? percentageMinimum : 50;;
+            this.minimumClosingPercentage = (percentageMinimum >= 50 && percentageMinimum <= 100) ? percentageMinimum : 50;
             this.factor = factor;
             this.moneyNeededForProject= moneyNeededForProject();
     }

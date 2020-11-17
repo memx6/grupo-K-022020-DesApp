@@ -51,7 +51,7 @@ public class InitServiceInMemory {
     }
 
     private void fireInitialDataProject() throws InvalidDateEndForProject, FactorInvalid, InvalidMinPercent {
-        Location avellaneda = LocationBuilder.LocationwithName("Avellaneda")
+        Location avellaneda = LocationBuilder.locationwithName("Avellaneda")
                 .withProvince("Buenos Aires")
                 .withPopulation(1000)
                 .withConnectivityState(true)
@@ -62,7 +62,7 @@ public class InitServiceInMemory {
                 .withLocation(avellaneda)
                 .build();
 
-        Location quilmes = LocationBuilder.LocationwithName("Bernal")
+        Location quilmes = LocationBuilder.locationwithName("Bernal")
                 .withProvince("BS AS")
                 .withPopulation(1000)
                 .withConnectivityState(false)
@@ -73,7 +73,7 @@ public class InitServiceInMemory {
                 .withLocation(quilmes)
                 .build();
 
-        Location rioCuarto = LocationBuilder.LocationwithName("Rio Cuarto")
+        Location rioCuarto = LocationBuilder.locationwithName("Rio Cuarto")
                 .withProvince("Cordoba")
                 .withPopulation(2000)
                 .withConnectivityState(false)
@@ -84,7 +84,7 @@ public class InitServiceInMemory {
                 .withLocation(rioCuarto)
                 .build();
 
-        Location calafate = LocationBuilder.LocationwithName("Calafate")
+        Location calafate = LocationBuilder.locationwithName("Calafate")
                 .withProvince("Santa Cruz")
                 .withPopulation(1700)
                 .withConnectivityState(false)
@@ -95,7 +95,7 @@ public class InitServiceInMemory {
                 .withLocation(calafate)
                 .build();
 
-        Location ushuaia = LocationBuilder.LocationwithName("Ushuaia")
+        Location ushuaia = LocationBuilder.locationwithName("Ushuaia")
                 .withProvince("Tierra del Fuego")
                 .withPopulation(1500)
                 .withConnectivityState(false)
@@ -117,45 +117,52 @@ public class InitServiceInMemory {
         User mauro = UserBuilder.userwithName("Mauro")
                 .withNick("memm")
                 .withPass("1234")
-                .withEmail("mem@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
                 .build();
         User fede = UserBuilder.userwithName("Fede")
                 .withNick("fmsa")
                 .withPass("4321")
-                .withEmail("fms@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
+                //.withEmail("fms@gmail.com")
                 .build();
         User german = UserBuilder.userwithName("German")
                 .withNick("mang")
                 .withPass("1234")
-                .withEmail("german@gmail.com")
+                //.withEmail("german@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
                 .build();
         User jose = UserBuilder.userwithName("Jose")
                 .withNick("jose")
                 .withPass("4321")
-                .withEmail("josesito@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
+                //.withEmail("josesito@gmail.com")
                 .build();
         User pepita = UserBuilder.userwithName("Pepita")
                 .withNick("pepi")
                 .withPass("1234")
-                .withEmail("pepi@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
+                //.withEmail("pepi@gmail.com")
                 .build();
         User pepon = UserBuilder.userwithName("Pepon")
                 .withNick("pepo")
                 .withPass("4321")
-                .withEmail("pepon@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
+                //.withEmail("pepon@gmail.com")
                 .build();
 
         User fidel = UserBuilder.userwithName("Fidel")
                 .withNick("Fidel")
                 .withPass("haskell")
-                .withEmail("foldr@gmail.com")
+                .withEmail("memx6.mm@gmail.com")
+                //.withEmail("foldr@gmail.com")
                 .build();
 
         UserAdministrator adm = new UserAdministrator ();
         adm.setName("Admin");
         adm.setPassword("4321");
         adm.setNick("admi");
-        adm.setEmail("adm@gmail.com");
+        adm.setEmail("memx6.mm@gmail.com");
+        //adm.setEmail("adm@gmail.com");
 
         userAdministratorService.save(adm);
         userService.save(mauro);

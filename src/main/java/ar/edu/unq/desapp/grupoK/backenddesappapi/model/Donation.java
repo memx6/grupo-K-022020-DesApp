@@ -53,6 +53,7 @@ public class Donation {
     public LocalDate getDonationMonth(){
         return this.dateTrx;
     }
+
     public User getUserDonator() {
         return this.user;
     }

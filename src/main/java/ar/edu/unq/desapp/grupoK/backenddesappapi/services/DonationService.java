@@ -26,4 +26,9 @@ public class DonationService {
     public List<Donation> findAll() {
         return this.donationRepository.findAll();
     }
+
+    public List<Donation> findByProject(Integer idProject) {
+        return this.donationRepository.findByProject(idProject);
+    }
+
 }

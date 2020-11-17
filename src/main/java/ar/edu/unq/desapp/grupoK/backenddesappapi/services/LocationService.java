@@ -30,8 +30,4 @@ public class LocationService {
     public List<Location> findAll() {
         return this.locationRepository.findAll();
     }
-
-    public List<Location> topThe10LeastChosenLocations() {
-        return locationRepository.findTop10ByLocations();
-    }
 }

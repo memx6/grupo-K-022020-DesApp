@@ -8,7 +8,7 @@ public class LocationBuilder {
     private Integer population;
     private boolean connectivityState;
 
-    public static LocationBuilder LocationwithName(String name) {
+    public static LocationBuilder locationwithName(String name) {
         LocationBuilder builder = new LocationBuilder();
         builder.name = name;
         return builder;

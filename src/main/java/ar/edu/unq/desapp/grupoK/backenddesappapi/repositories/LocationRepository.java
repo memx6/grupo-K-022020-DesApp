@@ -19,8 +19,5 @@ public interface LocationRepository extends CrudRepository<Location, Integer> {
 
     Location findByName(String name);
 
-    @Query(value= "SELECT TOP 10 (PROJECT.LOCATION) , PROJECT.NAME , COUNT(DONATION.ID) AS CANTIDAD FROM project INNER JOIN donation ON project.id== donation.project ORDER BY  CANTIDAD ASC",
-            nativeQuery = true)
-    List<Location> findTop10ByLocations();
 }
 
