@@ -84,15 +84,11 @@ public class UserAdministratorService {
 
     public List<String> top10Donations() {
         List<String> projects = projectService.top10Donations();
-        List<User> users = userService.findAll();
-        emailService.sendTop10Donations(projects, users);
         return projects;
     }
 
     public List<String> topThe10LeastChosenLocations() {
         List<String> locations = projectService.topThe10LeastChosenLocations();
-        List<User> users = userService.findAll();
-        emailService.sendTopThe10LeastChosenLocations(locations, users);
         return locations;
     }
 }

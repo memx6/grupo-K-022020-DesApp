@@ -37,7 +37,7 @@ public class Project {
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
     @JsonIgnore
     private List<Donation> donations;
 
