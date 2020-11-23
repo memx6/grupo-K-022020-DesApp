@@ -122,47 +122,40 @@ public class InitServiceInMemory {
         User fede = UserBuilder.userwithName("Fede")
                 .withNick("fmsa")
                 .withPass("4321")
-                .withEmail("memx6.mm@gmail.com")
-                //.withEmail("fms@gmail.com")
+                .withEmail("fedeericosanchez18@gmail.com")
                 .build();
         User german = UserBuilder.userwithName("German")
                 .withNick("mang")
                 .withPass("1234")
-                //.withEmail("german@gmail.com")
-                .withEmail("memx6.mm@gmail.com")
+                .withEmail("desapp.grupo.k@gmail.com")
                 .build();
         User jose = UserBuilder.userwithName("Jose")
                 .withNick("jose")
                 .withPass("4321")
-                .withEmail("memx6.mm@gmail.com")
-                //.withEmail("josesito@gmail.com")
+                .withEmail("desapp.grupo.k@gmail.com")
                 .build();
         User pepita = UserBuilder.userwithName("Pepita")
                 .withNick("pepi")
                 .withPass("1234")
-                .withEmail("memx6.mm@gmail.com")
-                //.withEmail("pepi@gmail.com")
+                .withEmail("desapp.grupo.k@gmail.com")
                 .build();
         User pepon = UserBuilder.userwithName("Pepon")
                 .withNick("pepo")
                 .withPass("4321")
-                .withEmail("memx6.mm@gmail.com")
-                //.withEmail("pepon@gmail.com")
+                .withEmail("desapp.grupo.k@gmail.com")
                 .build();
 
         User fidel = UserBuilder.userwithName("Fidel")
                 .withNick("Fidel")
                 .withPass("haskell")
-                .withEmail("memx6.mm@gmail.com")
-                //.withEmail("foldr@gmail.com")
+                .withEmail("desapp.grupo.k@gmail.com")
                 .build();
 
         UserAdministrator adm = new UserAdministrator ();
         adm.setName("Admin");
         adm.setPassword("4321");
         adm.setNick("admi");
-        adm.setEmail("memx6.mm@gmail.com");
-        //adm.setEmail("adm@gmail.com");
+        adm.setEmail("desapp.grupo.k@gmail.com");
 
         userAdministratorService.save(adm);
         userService.save(mauro);

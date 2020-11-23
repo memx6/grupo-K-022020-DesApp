@@ -1,5 +1,5 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.security;
-
+/*
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -45,4 +45,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         return jwtDecoder;
     }
-}
+}*/
