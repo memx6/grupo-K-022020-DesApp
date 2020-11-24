@@ -27,8 +27,8 @@ public class EmailSenderController {
     @Scheduled(fixedRate = 86400000)
     public void sendEmail() {
         List<User> users = userService.findAll();
-        //List<String> donations = projectService.top10Donations();
-        //List<String> locations = projectService.topThe10LeastChosenLocations();
+        List<String> donations = projectService.top10Donations();
+        List<String> locations = projectService.topThe10LeastChosenLocations();
 
         //emailService.sendTopThe10LeastChosenLocations(locations, users);
         //emailService.sendTop10Donations(donations, users);

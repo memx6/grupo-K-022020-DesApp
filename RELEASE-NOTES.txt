@@ -1,36 +1,61 @@
----------------------------------------------------------------------
-TAG ENTREGA 2.0
----------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+TAG ENTREGA 3.0
+---------------------------------------------------------------------------------------
 NEW FEATURES:
- * Using HSQLDB to persist data with H2
- * Backend Layout Implementation (Layers: Model, Repositories, Services, Webservices)
- * Register update and user login
- * User profile
- * Admin user creates projects
- * Donation by the user
- * Integration Swagger
- 
- * Fake data to test the application
+ * Presentation tier implementation with(I18n- US_ES).
+ * Date, $ (currency) and # (numbers) formatters.
+ * Register update and user login.
+ * Web-Services audit with Log4j2.
+ * Validations in Client and Server of forms and site transactions.
+ * Grid with Client Side paging.
+ * Daily emails sent to each user with the top ten.
+ * Send mail to donors at the end of a project.
+ * User profile.
+ * Filtering upcoming projects to close.
+ * Presentation tier implementation with(I18n- US_ES).
+
 
 NOTES:
-* - User money for testing purposes is unlimited
+* - User money for testing purposes is unlimited.
+* - incomplete implementation auth0 on client and server.
 
 KNOWN ISSUES:
-* Presentation tier implementation with(I18n- US_ES)* -
+* Autentication with auth0.
 
 
----------------------------------------------------------------------
-TAG ENTREGA 1.0
----------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+TAG ENTREGA 2.0
+---------------------------------------------------------------------------------------
 NEW FEATURES:
- * creation repo GitHub
- * creation project SprintBoot
- * config Travis backend
- * build backend
- * codacy integrate backend
- * Coverage
- * heroku deploy backend
- * model - UnitTest (Coverage 98%)
+ * Using HSQLDB to persist data with H2.
+ * Backend Layout Implementation (Layers: Model, Repositories, Services, Webservices).
+ * Register update and user login.
+ * User profile.
+ * Admin user creates projects.
+ * Donation by the user.
+ * Integration Swagger.
+ 
+ * Fake data to test the application.
+
+NOTES:
+* - User money for testing purposes is unlimited.
+
+KNOWN ISSUES:
+* Presentation tier implementation with(I18n- US_ES).
+
+
+------------------------------------------------------------------------------------
+TAG ENTREGA 1.0
+------------------------------------------------------------------------------------
+NEW FEATURES:
+ * creation repo GitHub.
+ * creation project SprintBoot.
+ * config Travis backend.
+ * build backend.
+ * codacy integrate backend.
+ * Coverage.
+ * heroku deploy backend.
+ * model - UnitTest (Coverage 98%).
 
 NOTES:
 * The email functionality is implemented as a console printout.

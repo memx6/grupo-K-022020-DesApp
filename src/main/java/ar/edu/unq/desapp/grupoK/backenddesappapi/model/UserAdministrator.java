@@ -43,7 +43,7 @@ public class UserAdministrator extends User {
     public void closeProject(Project project) throws CantFinishProject {
         if(this.projectCanBeClosed(project)){
             project.downProject();
-            project.getDonations().forEach(donation -> this.sendMailForDonated(project, donation.getUserDonator()));
+            //project.getDonations().forEach(donation -> this.sendMailForDonated(project, donation.getUserDonator()));
         }else{
             throw new CantFinishProject();
         }
@@ -61,7 +61,7 @@ public class UserAdministrator extends User {
         return project.getPercentageCompleted() >= project.getMinimumClosingPercentage();
     }
 
-    private void sendMailForDonated(Project project , User user){
-        System.out.println("this proyect " + project.getName() + " is close , tanks " + user.getName() + " for your colaboration. ");
-    }
+    //private void sendMailForDonated(Project project , User user){
+    //    System.out.println("this proyect " + project.getName() + " is close , tanks " + user.getName() + " for your colaboration. ");
+    //}
 }

@@ -62,7 +62,7 @@ public class InitServiceInMemory {
         Location avellaneda = LocationBuilder.locationwithName("Avellaneda")
                 .withProvince("Buenos Aires")
                 .withPopulation(1000)
-                .withConnectivityState(true)
+                .withConnectivityState(false)
                 .build();
         Project projectAvellaneda = ProjectBuilder.projectwithName("Proyecto Avellaneda")
                 .withFactor(1000)
