@@ -17,7 +17,7 @@ NEW FEATURES:
 
 NOTES:
 * - User money for testing purposes is unlimited.
-* - incomplete implementation auth0 on client and server.
+* - Incomplete implementation auth0 on client and server.
 
 KNOWN ISSUES:
 * Autentication with auth0.

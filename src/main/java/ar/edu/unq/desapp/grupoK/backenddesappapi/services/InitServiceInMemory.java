@@ -59,6 +59,21 @@ public class InitServiceInMemory {
                 .withPopulation(1000)
                 .withConnectivityState(false)
                 .build();
+        Location wilde = LocationBuilder.locationwithName("Wilde")
+                .withProvince("Buenos Aires")
+                .withPopulation(1000)
+                .withConnectivityState(false)
+                .build();
+        Location sarandi = LocationBuilder.locationwithName("Sarandi")
+                .withProvince("Buenos Aires")
+                .withPopulation(1000)
+                .withConnectivityState(false)
+                .build();
+        Location lomas = LocationBuilder.locationwithName("Lomas")
+                .withProvince("Buenos Aires")
+                .withPopulation(1000)
+                .withConnectivityState(false)
+                .build();
         Location avellaneda = LocationBuilder.locationwithName("Avellaneda")
                 .withProvince("Buenos Aires")
                 .withPopulation(1000)
@@ -120,6 +135,9 @@ public class InitServiceInMemory {
         projectService.save(projectCalafate);
         projectService.save(projectUshuaia);
         locationService.save(sanfer);
+        locationService.save(wilde);
+        locationService.save(lomas);
+        locationService.save(sarandi);
     }
 
     private void fireInitialDataUser() {
@@ -179,7 +197,7 @@ public class InitServiceInMemory {
     private void fireInitialDataDonation() {
         Donation donation1 = DonationBuilder.donation()
                 .withProject(projectService.findAll().get(0))
-                .withUser(userService.findByName("Mauro"))
+                .withUser(userService.findByName("Fidel"))
                 .withDescription("Avellaneda Donation")
                 .withMoney(1000)
                 .withDate(LocalDate.parse("2020-12-09"))
@@ -187,7 +205,7 @@ public class InitServiceInMemory {
 
         Donation donation2 = DonationBuilder.donation()
                 .withProject(projectService.findAll().get(0))
-                .withUser(userService.findByName("Fede"))
+                .withUser(userService.findByName("Jose"))
                 .withDescription("Avellaneda Donation")
                 .withMoney(1000)
                 .withDate(LocalDate.parse("2022-11-08"))
@@ -201,7 +219,7 @@ public class InitServiceInMemory {
                 .build();
         Donation donation4 = DonationBuilder.donation()
                 .withProject(projectService.findAll().get(1))
-                .withUser(userService.findByName("Mauro"))
+                .withUser(userService.findByName("Fidel"))
                 .withDescription("Quilmes Donation")
                 .withMoney(1000)
                 .withDate(LocalDate.parse("2021-12-11"))
@@ -215,7 +233,7 @@ public class InitServiceInMemory {
                 .build();
         Donation donation6 = DonationBuilder.donation()
                 .withProject(projectService.findAll().get(4))
-                .withUser(userService.findByName("Fede"))
+                .withUser(userService.findByName("Fidel"))
                 .withDescription("Calafate Donation")
                 .withMoney(1000)
                 .withDate(LocalDate.parse("2020-12-11"))

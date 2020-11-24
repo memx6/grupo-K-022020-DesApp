@@ -33,9 +33,6 @@ public class UserAdministratorService {
     private UserService userService;
 
     @Autowired
-    private DonationService donationService;
-
-    @Autowired
     private EmailService emailService;
 
     @Transactional
@@ -76,7 +73,7 @@ public class UserAdministratorService {
         admin.closeProject(project);
         Project projectClosed = projectService.save(project);
         List<User> users = findUsersByProject(projectClosed);
-        //emailService.sendMailForDonated(users, project);
+        emailService.sendMailForDonated(users, project);
         return projectClosed;
     }
 

@@ -50,7 +50,7 @@ public class UserAdministrator extends User {
     }
 
     public boolean projectCanBeClosed(Project project){
-        return  minimumPercentageCompleted(project) && onDateToEnd(project);
+        return  onDateToEnd(project);
     }
 
     private boolean onDateToEnd(Project project) {

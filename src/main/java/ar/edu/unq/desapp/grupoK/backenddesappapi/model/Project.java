@@ -121,6 +121,7 @@ public class Project {
 
     public void receiveDonation(Donation donation) throws InvalidDonatedMoney {
         this.addMoney(donation.getMoneyDonate());
+        this.percentageCompleted = (this.moneyReceiveForProject / this.moneyNeededForProject) * 100;
         this.donations.add(donation);
     }
 
@@ -129,7 +130,6 @@ public class Project {
             throw new InvalidDonatedMoney();
         }
         this.moneyReceiveForProject += money;
-        this.percentageCompleted = (this.moneyReceiveForProject() / this.moneyNeededForProject())* 100;
     }
 
     public Integer moneyReceiveForProject (){
@@ -150,6 +150,6 @@ public class Project {
     }
 
     public Integer getPercentageCompleted(){
-        return percentageCompleted;
+        return this.percentageCompleted;
     }
 }

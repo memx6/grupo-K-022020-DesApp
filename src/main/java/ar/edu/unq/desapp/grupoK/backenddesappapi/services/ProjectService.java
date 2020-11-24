@@ -29,6 +29,7 @@ public class ProjectService {
         return this.projectRepository.save(model);
     }
 
+    @Transactional
     public Project findById(Integer id) {
         return this.projectRepository.findById(id).get();
     }
