@@ -5,6 +5,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEnd
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
@@ -37,7 +38,7 @@ public class Project {
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "project")
     @JsonIgnore
     private List<Donation> donations;
 
