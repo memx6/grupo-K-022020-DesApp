@@ -35,6 +35,9 @@ public class User {
     @JsonIgnore
     protected List<Donation> donatedProyects = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
     public User() {}
 
     public User(String name,
@@ -46,6 +49,7 @@ public class User {
             this.password = password;
             this.nick = nick;
             this.email = email;
+            this.rol = Rol.ROLE_USER;
     }
 
     public Integer getId() {
@@ -92,5 +96,9 @@ public class User {
 
     public List<Donation> getDonatedProyects () {
         return this.donatedProyects;
+    }
+
+    public Enum<Rol> rol(){
+        return this.rol;
     }
 }

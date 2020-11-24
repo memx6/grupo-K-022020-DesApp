@@ -6,9 +6,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEnd
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import org.joda.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +19,9 @@ public class UserAdministrator extends User {
     @OneToMany(fetch = FetchType.LAZY)
     protected List<User> users = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
     public UserAdministrator(){}
 
     public UserAdministrator(String name,
@@ -32,6 +33,7 @@ public class UserAdministrator extends User {
         super(name, pass, nick, email);
         this.users = users;
         this.projects = projects;
+        this.rol = Rol.ROLE_ADMIN;
     }
 
     public Project createProject(String name, Location location, LocalDate dateEnd, Integer percentageMinimum, Integer factor) throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
