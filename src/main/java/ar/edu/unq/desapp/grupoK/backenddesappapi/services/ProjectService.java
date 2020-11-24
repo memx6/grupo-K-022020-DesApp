@@ -41,6 +41,10 @@ public class ProjectService {
         return projectRepository.findByVisibilityTrue();
     }
 
+    public Boolean existProjectWithLocation(Location location) {
+        return this.projectRepository.existsProjectByLocation(location);
+    }
+
     public List<Project> projectNearingCompletion(){
         List<Project> projectsOpen = this.openProjects();
         List<Project> projectsNearing = projectRepository.findByDateEndBetween(LocalDate.now());

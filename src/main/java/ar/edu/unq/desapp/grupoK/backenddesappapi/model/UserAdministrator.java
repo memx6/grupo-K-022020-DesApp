@@ -19,10 +19,10 @@ public class UserAdministrator extends User {
     @OneToMany(fetch = FetchType.LAZY)
     protected List<User> users = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
-
-    public UserAdministrator(){}
+    public UserAdministrator(){
+        super();
+        this.rol = Rol.ROLE_ADMIN;
+    }
 
     public UserAdministrator(String name,
                       String pass,

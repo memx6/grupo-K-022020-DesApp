@@ -10,6 +10,8 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEnd
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.UserAdministratorService;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.LocationAlreadyExists;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
@@ -41,14 +43,14 @@ public class UserAdministratorController {
     @CrossOrigin
     @PostMapping("/create/project/")
     @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class })
-    public ResponseEntity<Project> createProject(@Valid @RequestBody DTOProject dtoProject) throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
+    public ResponseEntity<Project> createProject(@Valid @RequestBody DTOProject dtoProject) throws LocationAlreadyExists, InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         Project newProject = userAdministratorService.createProject(dtoProject);
         return new ResponseEntity<>(newProject, HttpStatus.CREATED);
     }
 
     @CrossOrigin
     @PutMapping("/finish_project")
-    public ResponseEntity<Project> finishCollection(@Valid @RequestBody DTOProject dtoProject) throws CantFinishProject {
+    public ResponseEntity<?> finishCollection(@Valid @RequestBody DTOProject dtoProject) throws CantFinishProject {
         Project projectClosed = userAdministratorService.finishProject(dtoProject);
         return new ResponseEntity<>(projectClosed, HttpStatus.OK);
     }

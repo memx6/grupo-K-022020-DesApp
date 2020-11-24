@@ -40,6 +40,9 @@ public class InitServiceInMemory {
     @Autowired
     private DonationService donationService;
 
+    @Autowired
+    private LocationService locationService;
+
     @PostConstruct
     public void initialize() throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject {
         if (className.equals("org.h2.Driver")) {
@@ -51,6 +54,11 @@ public class InitServiceInMemory {
     }
 
     private void fireInitialDataProject() throws InvalidDateEndForProject, FactorInvalid, InvalidMinPercent {
+        Location sanfer = LocationBuilder.locationwithName("San Fernando")
+                .withProvince("Buenos Aires")
+                .withPopulation(1000)
+                .withConnectivityState(false)
+                .build();
         Location avellaneda = LocationBuilder.locationwithName("Avellaneda")
                 .withProvince("Buenos Aires")
                 .withPopulation(1000)
@@ -111,6 +119,7 @@ public class InitServiceInMemory {
         projectService.save(projectCordoba);
         projectService.save(projectCalafate);
         projectService.save(projectUshuaia);
+        locationService.save(sanfer);
     }
 
     private void fireInitialDataUser() {

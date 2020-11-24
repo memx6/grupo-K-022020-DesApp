@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -36,7 +37,8 @@ public class User {
     protected List<Donation> donatedProyects = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    @Access(AccessType.FIELD)
+    protected Rol rol = Rol.ROLE_USER;
 
     public User() {}
 
@@ -49,7 +51,6 @@ public class User {
             this.password = password;
             this.nick = nick;
             this.email = email;
-            this.rol = Rol.ROLE_USER;
     }
 
     public Integer getId() {
@@ -98,7 +99,11 @@ public class User {
         return this.donatedProyects;
     }
 
-    public Enum<Rol> rol(){
+    public Rol getRol(){
         return this.rol;
+    }
+
+    public void setRol(Rol newRole){
+        this.rol = newRole;
     }
 }

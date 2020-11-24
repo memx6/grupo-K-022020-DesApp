@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,11 +39,14 @@ public class Project {
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "project")
+    //@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "project")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "project")
     @JsonIgnore
     private List<Donation> donations;
 
-    public boolean visibility = true;
+    public Boolean visibility = true;
+
+
 
     public Project() {}
 

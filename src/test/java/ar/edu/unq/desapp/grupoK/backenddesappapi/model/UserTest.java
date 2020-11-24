@@ -30,12 +30,15 @@ public class UserTest {
         user.setEmail("mem@gmail.com");
         user.setDonatedMoney(1000);
         user.setMyPoints(10);
+        user.setRol(Rol.ROLE_USER);
         assertEquals(user.getName(),"mauro");
         assertEquals(user.getNick(),"mem");
         assertEquals(user.getPassword(),"123");
         assertEquals(user.getEmail(),"mem@gmail.com");
         assertEquals(user.getDonatedMoney(),1000);
         assertEquals(user.getMyPoints(),10);
+        assertEquals(user.getRol(),Rol.ROLE_USER);
+
     }
 
     @Test

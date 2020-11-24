@@ -5,11 +5,9 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.services.EmailService;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.ProjectService;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,10 +27,10 @@ public class EmailSenderController {
     @Scheduled(fixedRate = 86400000)
     public void sendEmail() {
         List<User> users = userService.findAll();
-        List<String> donations = projectService.top10Donations();
-        List<String> locations = projectService.topThe10LeastChosenLocations();
+        //List<String> donations = projectService.top10Donations();
+        //List<String> locations = projectService.topThe10LeastChosenLocations();
 
-        emailService.sendTopThe10LeastChosenLocations(locations, users);
-        emailService.sendTop10Donations(donations, users);
+        //emailService.sendTopThe10LeastChosenLocations(locations, users);
+        //emailService.sendTop10Donations(donations, users);
     }
 }

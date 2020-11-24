@@ -8,6 +8,8 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEnd
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserAdministratorRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.LocationAlreadyExists;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,15 +54,17 @@ public class UserAdministratorService {
     }
 
     @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class })
-    public Project createProject(DTOProject dtoProject) throws InvalidDateEndForProject, FactorInvalid, InvalidMinPercent {
+    public Project createProject(DTOProject dtoProject) throws LocationAlreadyExists, InvalidDateEndForProject, FactorInvalid, InvalidMinPercent {
         UserAdministrator admin = admRepository.findById(dtoProject.getIdUserAdmin()).get();
         Location newLocation = locationService.findByName(dtoProject.getLocationName());
-
+        if (projectService.existProjectWithLocation(newLocation)){
+            throw new LocationAlreadyExists();
+        }
         Project newProject = admin.createProject(dtoProject.getProjectName(),
-                newLocation,
-                dtoProject.getDateEnd(),
-                dtoProject.getMinimumClosingPercentage(),
-                dtoProject.getFactor());
+                    newLocation,
+                    dtoProject.getDateEnd(),
+                    dtoProject.getMinimumClosingPercentage(),
+                    dtoProject.getFactor());
         projectService.save(newProject);
         return newProject;
     }
@@ -71,7 +75,7 @@ public class UserAdministratorService {
         admin.closeProject(project);
         Project projectClosed = projectService.save(project);
         List<User> users = findUsersByProject(dtoProject);
-        emailService.sendMailForDonated(users, project);
+        //emailService.sendMailForDonated(users, project);
         return projectClosed;
     }
 

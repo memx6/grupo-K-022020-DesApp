@@ -27,4 +27,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
             nativeQuery = true)
     List<Project> findByDateEndBetween(LocalDate dateStart);
 
+    Boolean existsProjectByLocation(Location location);
+
+
 }
