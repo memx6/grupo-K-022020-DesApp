@@ -9,7 +9,6 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPerc
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserAdministratorRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.LocationAlreadyExists;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,9 +33,6 @@ public class UserAdministratorService {
     private UserService userService;
 
     @Autowired
-    private DonationService donationService;
-
-    @Autowired
     private EmailService emailService;
 
     @Transactional
@@ -53,11 +49,11 @@ public class UserAdministratorService {
         return adminLogin;
     }
 
-    @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class })
-    public Project createProject(DTOProject dtoProject) throws LocationAlreadyExists, InvalidDateEndForProject, FactorInvalid, InvalidMinPercent {
+    @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class, LocationAlreadyExists.class })
+    public Project createProject(DTOProject dtoProject) throws InvalidDateEndForProject, FactorInvalid, InvalidMinPercent, LocationAlreadyExists {
         UserAdministrator admin = admRepository.findById(dtoProject.getIdUserAdmin()).get();
         Location newLocation = locationService.findByName(dtoProject.getLocationName());
-        if (projectService.existProjectWithLocation(newLocation)){
+        if (projectService.existProjectWithLocation(newLocation)) {
             throw new LocationAlreadyExists();
         }
         Project newProject = admin.createProject(dtoProject.getProjectName(),
@@ -69,18 +65,20 @@ public class UserAdministratorService {
         return newProject;
     }
 
+    @ExceptionHandler(CantFinishProject.class)
+    @Transactional
     public Project finishProject(DTOProject dtoProject) throws CantFinishProject {
         UserAdministrator admin = admRepository.findById(dtoProject.getIdUserAdmin()).get();
         Project project = projectService.findById(dtoProject.getIdProject());
         admin.closeProject(project);
         Project projectClosed = projectService.save(project);
-        List<User> users = findUsersByProject(dtoProject);
-        //emailService.sendMailForDonated(users, project);
+        List<User> users = findUsersByProject(projectClosed);
+        emailService.sendMailForDonated(users, project);
         return projectClosed;
     }
 
-    private List<User> findUsersByProject(DTOProject dtoProject) {
-        return donationService.findByProject(dtoProject.getIdProject())
+    private List<User> findUsersByProject(Project project) {
+        return project.getDonations()
                 .stream()
                 .map(Donation::getUser)
                 .collect(Collectors.toList());

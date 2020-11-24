@@ -6,6 +6,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.DonationRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserRepository;
@@ -67,6 +68,7 @@ public class UserService {
         return userLogin;
     }
 
+    @ExceptionHandler(InvalidDonatedMoney.class)
     public Donation donate(DTODonation dtoDonation) throws InvalidDonatedMoney {
         User donorUser = userRepository.findById(dtoDonation.getIdUser()).get();
         Project project = projectService.findById(dtoDonation.getIdProject());

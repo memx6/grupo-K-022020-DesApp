@@ -1,18 +1,13 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDateEndForProject;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPercent;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,15 +33,12 @@ public class Project {
     private Integer factor = 1000;
     private Integer moneyNeededForProject = 0;
     private Integer moneyReceiveForProject = 0;
+    private Integer percentageCompleted = 0;
 
-    //@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "project")
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "project")
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "project")
     @JsonIgnore
     private List<Donation> donations;
-
     public Boolean visibility = true;
-
-
 
     public Project() {}
 
@@ -58,7 +50,7 @@ public class Project {
             this.dateEnd = dateEnd;
             this.minimumClosingPercentage = (percentageMinimum >= 50 && percentageMinimum <= 100) ? percentageMinimum : 50;
             this.factor = factor;
-            this.moneyNeededForProject= moneyNeededForProject();
+            this.moneyNeededForProject= this.moneyNeededForProject();
     }
 
     public Integer getId() {
@@ -110,6 +102,10 @@ public class Project {
         return this.dateEnd;
     }
 
+    public LocalDate getDateStart (){
+        return this.dateStart;
+    }
+
     public Integer getFactor (){ return this.factor; }
 
     public void setDateEnd (LocalDate endDate) throws InvalidDateEndForProject {
@@ -125,6 +121,7 @@ public class Project {
 
     public void receiveDonation(Donation donation) throws InvalidDonatedMoney {
         this.addMoney(donation.getMoneyDonate());
+        this.percentageCompleted = (this.moneyReceiveForProject / this.moneyNeededForProject) * 100;
         this.donations.add(donation);
     }
 
@@ -136,7 +133,7 @@ public class Project {
     }
 
     public Integer moneyReceiveForProject (){
-        return moneyReceiveForProject;
+        return this.moneyReceiveForProject;
     }
 
     public List<Donation> getDonations(){
@@ -144,8 +141,8 @@ public class Project {
     }
 
     public void downProject(){
-        location.setConnectivityState(true);
-        this.visibility = false;
+      location.setConnectivityState(true);
+      this.visibility = false;
     }
 
     public boolean activeProject(){
@@ -153,6 +150,6 @@ public class Project {
     }
 
     public Integer getPercentageCompleted(){
-        return ((this.moneyReceiveForProject() / this.moneyNeededForProject())* 100);
+        return this.percentageCompleted;
     }
 }
