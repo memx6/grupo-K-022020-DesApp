@@ -9,6 +9,7 @@ public class DTOProject {
     private String projectName;
     private Integer minimumClosingPercentage;
     private LocalDate dateEnd;
+    private LocalDate dateStart;
     private Integer factor;
     private String locationName;
 
@@ -44,6 +45,9 @@ public class DTOProject {
     public Integer getMinimumClosingPercentage() { return minimumClosingPercentage; }
     public LocalDate getDateEnd() {
         return dateEnd;
+    }
+    public LocalDate getDateStart() {
+        return dateStart;
     }
     public Integer getFactor() {
         return factor;
