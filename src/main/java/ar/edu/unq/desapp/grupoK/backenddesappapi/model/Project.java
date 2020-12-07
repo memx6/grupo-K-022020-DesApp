@@ -65,11 +65,21 @@ public class Project {
         return this.projectName;
     }
 
+    public void setProjectName(String name) { this.projectName = name;}
+
     public Integer getMoneyReceiveForProject() { return this.moneyReceiveForProject;}
 
     public boolean getVisibility(){
         return this.visibility;
     }
+
+    public void setDateStart(LocalDate startDate) throws InvalidDateEndForProject {
+        if (startDate.isAfter(this.dateEnd)) {
+            throw new InvalidDateEndForProject();
+        }
+        this.dateStart = startDate;
+    }
+
 
     public void setVisibility(boolean bool){
         this.visibility = bool;

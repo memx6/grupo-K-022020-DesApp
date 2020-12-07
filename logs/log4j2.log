@@ -1,0 +1,311 @@
+2020-11-24 20:17:03.348  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Starting BackendDesappApiApplication on DESKTOP-PJG2RLL with PID 13100 (C:\Users\Mauro\Desktop\desapp\target\classes started by Mauro in C:\Users\Mauro\Desktop\desapp)
+2020-11-24 20:17:03.373  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : No active profile set, falling back to default profiles: default
+2020-11-24 20:17:06.180  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-11-24 20:17:06.423  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 225ms. Found 5 JPA repository interfaces.
+2020-11-24 20:17:08.056  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2020-11-24 20:17:08.069  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2020-11-24 20:17:08.070  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-11-24 20:17:08.393  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2020-11-24 20:17:08.393  INFO DESKTOP-PJG2RLL --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4913 ms
+2020-11-24 20:17:08.451 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2020-11-24 20:17:08.452 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2020-11-24 20:17:08.688  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 20:17:08.721  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-11-24 20:17:09.219  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.s.InitServiceInMemory        : Init Data Using H2 DB
+2020-11-24 20:17:09.719  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2020-11-24 20:17:09.885  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2020-11-24 20:17:11.315  INFO DESKTOP-PJG2RLL --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-11-24 20:17:13.074  INFO DESKTOP-PJG2RLL --- [         task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-11-24 20:17:13.588  WARN DESKTOP-PJG2RLL --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-11-24 20:17:13.750 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 24 mappings in 'requestMappingHandlerMapping'
+2020-11-24 20:17:13.915  INFO DESKTOP-PJG2RLL --- [  restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-24 20:17:13.943  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.a.LoggingAspect              : Class: SpringFoxConfig Method: api, Args: [] Execution time of :: 11 ms
+2020-11-24 20:17:14.407 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-11-24 20:17:14.576 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-11-24 20:17:14.603 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-11-24 20:17:14.697  WARN DESKTOP-PJG2RLL --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-11-24 20:17:15.105  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-24 20:17:15.107  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 20:17:15.149  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 20:17:15.199  INFO DESKTOP-PJG2RLL --- [  restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 20:17:15.544  INFO DESKTOP-PJG2RLL --- [  restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 20:17:15.568  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-11-24 20:17:15.569  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-11-24 20:17:15.592  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Started BackendDesappApiApplication in 13.537 seconds (JVM running for 16.306)
+2020-11-24 20:18:00.365  INFO DESKTOP-PJG2RLL --- [   scheduling-1] a.e.u.d.g.b.a.LoggingAspect              : Class: EmailSenderController Method: sendEmail, Args: [] Execution time of :: 44781 ms
+2020-11-24 20:21:12.072  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 20:21:12.073  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2020-11-24 20:21:12.073 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected StandardServletMultipartResolver
+2020-11-24 20:21:12.088 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2020-11-24 20:21:12.088  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 15 ms
+2020-11-24 20:21:12.101 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : POST "/user/login", parameters={}
+2020-11-24 20:21:12.108 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#login(DTOUser)
+2020-11-24 20:21:12.202 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser@a4fe2e3]
+2020-11-24 20:21:12.243 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.GlobalExceptionHandler#handleAll(Exception, WebRequest)
+2020-11-24 20:21:12.291 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-11-24 20:21:12.292 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.ApiError@4cac0be0]
+2020-11-24 20:21:12.320 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser: The password and / or your email are incorrect]
+2020-11-24 20:21:12.320 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 400 BAD_REQUEST
+2020-11-24 20:21:23.379 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : POST "/user/login", parameters={}
+2020-11-24 20:21:23.379 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#login(DTOUser)
+2020-11-24 20:21:23.381 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser@72671975]
+2020-11-24 20:21:23.385 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.GlobalExceptionHandler#handleAll(Exception, WebRequest)
+2020-11-24 20:21:23.386 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-11-24 20:21:23.387 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.ApiError@f66e8d0]
+2020-11-24 20:21:23.388 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser: The password and / or your email are incorrect]
+2020-11-24 20:21:23.388 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed 400 BAD_REQUEST
+2020-11-24 20:21:31.604 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : POST "/user/login", parameters={}
+2020-11-24 20:21:31.605 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#login(DTOUser)
+2020-11-24 20:21:31.606 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser@74cda2c1]
+2020-11-24 20:21:31.609 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.GlobalExceptionHandler#handleAll(Exception, WebRequest)
+2020-11-24 20:21:31.610 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-11-24 20:21:31.610 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.exceptions.ApiError@5aee1bc2]
+2020-11-24 20:21:31.612 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser: The password and / or your email are incorrect]
+2020-11-24 20:21:31.613 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : Completed 400 BAD_REQUEST
+2020-12-07 11:23:09.198  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Starting BackendDesappApiApplication on DESKTOP-PJG2RLL with PID 12820 (C:\Users\Mauro\Desktop\desapp\target\classes started by Mauro in C:\Users\Mauro\Desktop\desapp)
+2020-12-07 11:23:09.210  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : No active profile set, falling back to default profiles: default
+2020-12-07 11:23:10.899  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-07 11:23:11.029  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122ms. Found 5 JPA repository interfaces.
+2020-12-07 11:23:11.945  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2020-12-07 11:23:11.958  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2020-12-07 11:23:11.959  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-07 11:23:12.184  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2020-12-07 11:23:12.184  INFO DESKTOP-PJG2RLL --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2906 ms
+2020-12-07 11:23:12.216 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2020-12-07 11:23:12.216 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2020-12-07 11:23:12.383  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-07 11:23:12.406  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-12-07 11:23:12.626  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.s.InitServiceInMemory        : Init Data Using H2 DB
+2020-12-07 11:23:12.954  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2020-12-07 11:23:13.098  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2020-12-07 11:23:14.244  INFO DESKTOP-PJG2RLL --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-07 11:23:15.332  INFO DESKTOP-PJG2RLL --- [         task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-12-07 11:23:15.715  WARN DESKTOP-PJG2RLL --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-07 11:23:15.820 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2020-12-07 11:23:15.932  INFO DESKTOP-PJG2RLL --- [  restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-12-07 11:23:15.960  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.a.LoggingAspect              : Class: SpringFoxConfig Method: api, Args: [] Execution time of :: 13 ms
+2020-12-07 11:23:16.189 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-12-07 11:23:16.259 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-12-07 11:23:16.273 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-12-07 11:23:16.311  WARN DESKTOP-PJG2RLL --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-12-07 11:23:16.548  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2020-12-07 11:23:16.550  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-07 11:23:16.576  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-07 11:23:16.616  INFO DESKTOP-PJG2RLL --- [  restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-07 11:23:16.892  INFO DESKTOP-PJG2RLL --- [  restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-12-07 11:23:16.912  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-07 11:23:16.912  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-07 11:23:16.927  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Started BackendDesappApiApplication in 8.45 seconds (JVM running for 10.094)
+2020-12-07 11:24:01.714  INFO DESKTOP-PJG2RLL --- [   scheduling-1] a.e.u.d.g.b.a.LoggingAspect              : Class: EmailSenderController Method: sendEmail, Args: [] Execution time of :: 44790 ms
+2020-12-07 11:29:48.052  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Starting BackendDesappApiApplication on DESKTOP-PJG2RLL with PID 3136 (C:\Users\Mauro\Desktop\desapp\target\classes started by Mauro in C:\Users\Mauro\Desktop\desapp)
+2020-12-07 11:29:48.052  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : No active profile set, falling back to default profiles: default
+2020-12-07 11:29:49.691  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-07 11:29:49.800  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115ms. Found 5 JPA repository interfaces.
+2020-12-07 11:29:50.659  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2020-12-07 11:29:50.675  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2020-12-07 11:29:50.675  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-07 11:29:50.909  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2020-12-07 11:29:50.909  INFO DESKTOP-PJG2RLL --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2791 ms
+2020-12-07 11:29:50.941 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2020-12-07 11:29:50.941 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2020-12-07 11:29:51.097  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-07 11:29:51.112  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-12-07 11:29:51.306  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.s.InitServiceInMemory        : Init Data Using H2 DB
+2020-12-07 11:29:51.530  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2020-12-07 11:29:51.655  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2020-12-07 11:29:52.694  INFO DESKTOP-PJG2RLL --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-07 11:29:53.770  INFO DESKTOP-PJG2RLL --- [         task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-12-07 11:29:54.143  WARN DESKTOP-PJG2RLL --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-07 11:29:54.252 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2020-12-07 11:29:54.362  INFO DESKTOP-PJG2RLL --- [  restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-12-07 11:29:54.377  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.a.LoggingAspect              : Class: SpringFoxConfig Method: api, Args: [] Execution time of :: 10 ms
+2020-12-07 11:29:54.580 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-12-07 11:29:54.643 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-12-07 11:29:54.658 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-12-07 11:29:54.690  WARN DESKTOP-PJG2RLL --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-12-07 11:29:54.925  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2020-12-07 11:29:54.925  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-07 11:29:54.941  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-07 11:29:54.988  INFO DESKTOP-PJG2RLL --- [  restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-07 11:29:55.222  INFO DESKTOP-PJG2RLL --- [  restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-12-07 11:29:55.238  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-07 11:29:55.253  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-07 11:29:55.253  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Started BackendDesappApiApplication in 7.819 seconds (JVM running for 9.226)
+2020-12-07 11:29:55.300  INFO DESKTOP-PJG2RLL --- [   scheduling-1] a.e.u.d.g.b.a.LoggingAspect              : Class: EmailSenderController Method: sendEmail, Args: [] Execution time of :: 51 ms
+2020-12-07 11:30:05.408  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-07 11:30:05.408  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2020-12-07 11:30:05.409 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected StandardServletMultipartResolver
+2020-12-07 11:30:05.420 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2020-12-07 11:30:05.421  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 12 ms
+2020-12-07 11:30:05.429 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : POST "/admin/update/project/3", parameters={}
+2020-12-07 11:30:05.438 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2020-12-07 11:30:05.444 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2020-12-07 11:30:05.444 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed 404 NOT_FOUND
+2020-12-07 11:30:05.454 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : "ERROR" dispatch for POST "/error", parameters={}
+2020-12-07 11:30:05.456 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2020-12-07 11:30:05.486 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:30:05.487 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Mon Dec 07 11:30:05 ART 2020, status=404, error=Not Found, message=, path=/admin/update/p (truncated)...]
+2020-12-07 11:30:05.513 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Exiting from "ERROR" dispatch, status 404
+2020-12-07 11:30:15.585 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : PUT "/admin/update/project/3", parameters={}
+2020-12-07 11:30:15.586 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2020-12-07 11:30:15.589 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2020-12-07 11:30:15.590 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed 404 NOT_FOUND
+2020-12-07 11:30:15.590 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : "ERROR" dispatch for PUT "/error", parameters={}
+2020-12-07 11:30:15.590 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2020-12-07 11:30:15.591 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:30:15.591 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Mon Dec 07 11:30:15 ART 2020, status=404, error=Not Found, message=, path=/admin/update/p (truncated)...]
+2020-12-07 11:30:15.593 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Exiting from "ERROR" dispatch, status 404
+2020-12-07 11:30:52.047 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : PUT "/admin/update/project/3", parameters={}
+2020-12-07 11:30:52.048 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2020-12-07 11:30:52.051 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2020-12-07 11:30:52.051 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : Completed 404 NOT_FOUND
+2020-12-07 11:30:52.052 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : "ERROR" dispatch for PUT "/error", parameters={}
+2020-12-07 11:30:52.052 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2020-12-07 11:30:52.053 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:30:52.053 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Mon Dec 07 11:30:52 ART 2020, status=404, error=Not Found, message=, path=/admin/update/p (truncated)...]
+2020-12-07 11:30:52.055 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-5] o.s.w.s.DispatcherServlet                : Exiting from "ERROR" dispatch, status 404
+2020-12-07 11:31:15.376 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] o.s.w.s.DispatcherServlet                : PUT "/admin/update/projects/3", parameters={}
+2020-12-07 11:31:15.377 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#updateProject(DTOProject, Integer)
+2020-12-07 11:31:15.421 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@1f0dfdaa]
+2020-12-07 11:31:15.456  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-6] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: updateProject, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@1f0dfdaa, 3] Execution time of :: 23 ms
+2020-12-07 11:31:15.456 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:31:15.456 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Project updated successfully"]
+2020-12-07 11:31:15.459 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-6] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:31:24.049 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : GET "/project/projects", parameters={}
+2020-12-07 11:31:24.049 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.ProjectController#allProjects()
+2020-12-07 11:31:24.067  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-3] a.e.u.d.g.b.a.LoggingAspect              : Class: ProjectController Method: allProjects, Args: [] Execution time of :: 16 ms
+2020-12-07 11:31:24.072 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:31:24.072 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project@5705bb51, ar.edu.unq.desapp.grupoK.backendd (truncated)...]
+2020-12-07 11:31:24.088 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:32:29.888 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.DispatcherServlet                : GET "/project/projects", parameters={}
+2020-12-07 11:32:29.888 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.ProjectController#allProjects()
+2020-12-07 11:32:29.901  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-9] a.e.u.d.g.b.a.LoggingAspect              : Class: ProjectController Method: allProjects, Args: [] Execution time of :: 11 ms
+2020-12-07 11:32:29.902 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:32:29.902 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [[ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project@618537e9, ar.edu.unq.desapp.grupoK.backendd (truncated)...]
+2020-12-07 11:32:29.904 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:34:02.381 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : PUT "/admin/update/locations/6", parameters={}
+2020-12-07 11:34:02.382 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2020-12-07 11:34:02.384 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2020-12-07 11:34:02.385 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed 404 NOT_FOUND
+2020-12-07 11:34:02.386 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : "ERROR" dispatch for PUT "/error", parameters={}
+2020-12-07 11:34:02.386 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2020-12-07 11:34:02.386 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:34:02.387 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Mon Dec 07 11:34:02 ART 2020, status=404, error=Not Found, message=, path=/admin/update/l (truncated)...]
+2020-12-07 11:34:02.388 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Exiting from "ERROR" dispatch, status 404
+2020-12-07 11:34:26.517  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Starting BackendDesappApiApplication on DESKTOP-PJG2RLL with PID 10984 (C:\Users\Mauro\Desktop\desapp\target\classes started by Mauro in C:\Users\Mauro\Desktop\desapp)
+2020-12-07 11:34:26.517  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : No active profile set, falling back to default profiles: default
+2020-12-07 11:34:28.139  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-12-07 11:34:28.264  INFO DESKTOP-PJG2RLL --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114ms. Found 5 JPA repository interfaces.
+2020-12-07 11:34:29.108  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2020-12-07 11:34:29.123  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2020-12-07 11:34:29.123  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-12-07 11:34:29.342  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2020-12-07 11:34:29.342  INFO DESKTOP-PJG2RLL --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2752 ms
+2020-12-07 11:34:29.373 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2020-12-07 11:34:29.373 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2020-12-07 11:34:29.529  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-07 11:34:29.545  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-12-07 11:34:29.808  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.s.InitServiceInMemory        : Init Data Using H2 DB
+2020-12-07 11:34:30.038  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2020-12-07 11:34:30.147  INFO DESKTOP-PJG2RLL --- [         task-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2020-12-07 11:34:31.179  INFO DESKTOP-PJG2RLL --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-12-07 11:34:32.194  INFO DESKTOP-PJG2RLL --- [         task-2] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-12-07 11:34:32.539  WARN DESKTOP-PJG2RLL --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-12-07 11:34:32.649 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2020-12-07 11:34:32.758  INFO DESKTOP-PJG2RLL --- [  restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-12-07 11:34:32.789  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.a.LoggingAspect              : Class: SpringFoxConfig Method: api, Args: [] Execution time of :: 10 ms
+2020-12-07 11:34:32.977 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2020-12-07 11:34:33.039 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2020-12-07 11:34:33.055 DEBUG DESKTOP-PJG2RLL --- [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-12-07 11:34:33.086  WARN DESKTOP-PJG2RLL --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-12-07 11:34:33.321  INFO DESKTOP-PJG2RLL --- [  restartedMain] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2020-12-07 11:34:33.321  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-07 11:34:33.352  INFO DESKTOP-PJG2RLL --- [  restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-07 11:34:33.383  INFO DESKTOP-PJG2RLL --- [  restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-07 11:34:33.618  INFO DESKTOP-PJG2RLL --- [  restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-12-07 11:34:33.649  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-12-07 11:34:33.649  INFO DESKTOP-PJG2RLL --- [  restartedMain] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-12-07 11:34:33.664  INFO DESKTOP-PJG2RLL --- [  restartedMain] a.e.u.d.g.b.BackendDesappApiApplication  : Started BackendDesappApiApplication in 7.751 seconds (JVM running for 9.151)
+2020-12-07 11:34:33.711  INFO DESKTOP-PJG2RLL --- [   scheduling-1] a.e.u.d.g.b.a.LoggingAspect              : Class: EmailSenderController Method: sendEmail, Args: [] Execution time of :: 51 ms
+2020-12-07 11:35:16.371  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-07 11:35:16.371  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2020-12-07 11:35:16.371 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Detected StandardServletMultipartResolver
+2020-12-07 11:35:16.382 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2020-12-07 11:35:16.383  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 12 ms
+2020-12-07 11:35:16.392 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : PUT "/admin/update/locations/6", parameters={}
+2020-12-07 11:35:16.397 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#updateLocation(Location, Integer)
+2020-12-07 11:35:16.457 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location@3bc09574]
+2020-12-07 11:35:16.486  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: updateLocation, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location@3bc09574, 6] Execution time of :: 18 ms
+2020-12-07 11:35:16.494 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:35:16.495 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Location updated successfully"]
+2020-12-07 11:35:16.504 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:35:33.951 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : PUT "/admin/update/locations/6", parameters={}
+2020-12-07 11:35:33.952 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#updateLocation(Location, Integer)
+2020-12-07 11:35:33.953 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location@2148e526]
+2020-12-07 11:35:33.958  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-3] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: updateLocation, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location@2148e526, 6] Execution time of :: 3 ms
+2020-12-07 11:35:33.959 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:35:33.959 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Location updated successfully"]
+2020-12-07 11:35:33.960 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:35:37.319 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : GET "/project/projects", parameters={}
+2020-12-07 11:35:37.319 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.ProjectController#allProjects()
+2020-12-07 11:35:37.334  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-4] a.e.u.d.g.b.a.LoggingAspect              : Class: ProjectController Method: allProjects, Args: [] Execution time of :: 13 ms
+2020-12-07 11:35:37.339 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:35:37.340 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project@1f55337c, ar.edu.unq.desapp.grupoK.backendd (truncated)...]
+2020-12-07 11:35:37.365 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:37:04.417 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.DispatcherServlet                : PUT "/admin/update/project/3", parameters={}
+2020-12-07 11:37:04.421 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2020-12-07 11:37:04.424 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2020-12-07 11:37:04.425 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.DispatcherServlet                : Completed 404 NOT_FOUND
+2020-12-07 11:37:04.430 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.DispatcherServlet                : "ERROR" dispatch for PUT "/error", parameters={}
+2020-12-07 11:37:04.431 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2020-12-07 11:37:04.437 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:37:04.437 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Mon Dec 07 11:37:04 ART 2020, status=404, error=Not Found, message=, path=/admin/update/p (truncated)...]
+2020-12-07 11:37:04.443 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-7] o.s.w.s.DispatcherServlet                : Exiting from "ERROR" dispatch, status 404
+2020-12-07 11:37:23.622 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] o.s.w.s.DispatcherServlet                : PUT "/admin/update/projects/3", parameters={}
+2020-12-07 11:37:23.624 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#updateProject(DTOProject, Integer)
+2020-12-07 11:37:23.629 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@4def055a]
+2020-12-07 11:37:23.647  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-8] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: updateProject, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@4def055a, 3] Execution time of :: 16 ms
+2020-12-07 11:37:23.647 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:37:23.647 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Project updated successfully"]
+2020-12-07 11:37:23.649 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-8] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:37:58.828 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.DispatcherServlet                : POST "/user/donate", parameters={}
+2020-12-07 11:37:58.829 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#donate(DTODonation)
+2020-12-07 11:37:58.832 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation@6053cbc3]
+2020-12-07 11:37:58.860  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-9] a.e.u.d.g.b.a.LoggingAspect              : Class: UserController Method: donate, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation@6053cbc3] Execution time of :: 23 ms
+2020-12-07 11:37:58.863 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:37:58.864 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Donation@281b369f]
+2020-12-07 11:37:58.870 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-9] o.s.w.s.DispatcherServlet                : Completed 202 ACCEPTED
+2020-12-07 11:38:05.549 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] o.s.w.s.DispatcherServlet                : PUT "/admin/update/projects/3", parameters={}
+2020-12-07 11:38:05.550 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#updateProject(DTOProject, Integer)
+2020-12-07 11:38:05.551 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@60cb7bc9]
+2020-12-07 11:38:05.559  INFO DESKTOP-PJG2RLL --- [io-8080-exec-10] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: updateProject, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@60cb7bc9, 3] Execution time of :: 7 ms
+2020-12-07 11:38:05.560 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:38:05.560 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Project updated successfully"]
+2020-12-07 11:38:05.563 DEBUG DESKTOP-PJG2RLL --- [io-8080-exec-10] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:38:18.100 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : POST "/admin/create/project/", parameters={}
+2020-12-07 11:38:18.100 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserAdministratorController#createProject(DTOProject)
+2020-12-07 11:38:18.101 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@1f5af840]
+2020-12-07 11:38:18.116  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-1] a.e.u.d.g.b.a.LoggingAspect              : Class: UserAdministratorController Method: createProject, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject@1f5af840] Execution time of :: 11 ms
+2020-12-07 11:38:18.118 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:38:18.118 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project@526de775]
+2020-12-07 11:38:18.120 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed 201 CREATED
+2020-12-07 11:38:24.933 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : POST "/user/login", parameters={}
+2020-12-07 11:38:24.934 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#login(DTOUser)
+2020-12-07 11:38:24.935 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser@1606c7c1]
+2020-12-07 11:38:24.942  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-2] a.e.u.d.g.b.a.LoggingAspect              : Class: UserController Method: login, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser@1606c7c1] Execution time of :: 4 ms
+2020-12-07 11:38:24.945 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:38:24.945 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [ar.edu.unq.desapp.grupoK.backenddesappapi.model.User@7d6c93]
+2020-12-07 11:38:24.946 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 202 ACCEPTED
+2020-12-07 11:38:32.088 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : PUT "/user/update_user", parameters={}
+2020-12-07 11:38:32.088 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.UserController#update_user(User)
+2020-12-07 11:38:32.094 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [ar.edu.unq.desapp.grupoK.backenddesappapi.model.User@7218a441]
+2020-12-07 11:38:32.120  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-3] a.e.u.d.g.b.a.LoggingAspect              : Class: UserController Method: update_user, Args: [ar.edu.unq.desapp.grupoK.backenddesappapi.model.User@7218a441] Execution time of :: 7 ms
+2020-12-07 11:38:32.121 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:38:32.121 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Your personal data has been updated successfully"]
+2020-12-07 11:38:32.123 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2020-12-07 11:38:41.509 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : GET "/project/projects", parameters={}
+2020-12-07 11:38:41.509 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to ar.edu.unq.desapp.grupoK.backenddesappapi.webservices.ProjectController#allProjects()
+2020-12-07 11:38:41.519  INFO DESKTOP-PJG2RLL --- [nio-8080-exec-4] a.e.u.d.g.b.a.LoggingAspect              : Class: ProjectController Method: allProjects, Args: [] Execution time of :: 10 ms
+2020-12-07 11:38:41.520 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-12-07 11:38:41.520 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project@491d3008, ar.edu.unq.desapp.grupoK.backendd (truncated)...]
+2020-12-07 11:38:41.522 DEBUG DESKTOP-PJG2RLL --- [nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed 200 OK

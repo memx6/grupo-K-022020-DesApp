@@ -30,7 +30,7 @@ public class EmailSenderController {
         List<String> donations = projectService.top10Donations();
         List<String> locations = projectService.topThe10LeastChosenLocations();
 
-        emailService.sendTopThe10LeastChosenLocations(locations, users);
-        emailService.sendTop10Donations(donations, users);
+        //emailService.sendTopThe10LeastChosenLocations(locations, users);
+        //emailService.sendTop10Donations(donations, users);
     }
 }

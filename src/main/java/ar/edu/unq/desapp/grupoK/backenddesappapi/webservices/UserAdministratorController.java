@@ -47,6 +47,27 @@ public class UserAdministratorController {
     }
 
     @CrossOrigin
+    @PutMapping("/update/projects/{id}")
+    public ResponseEntity<String> updateProject(
+            @RequestBody DTOProject project,
+            @PathVariable("id") Integer id) throws Exception {
+
+        userAdministratorService.updateProject(id, project);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Project updated successfully");
+    }
+
+    @CrossOrigin
+    @PutMapping("/update/locations/{id}")
+    public ResponseEntity<String> updateLocation(
+            @RequestBody Location location,
+            @PathVariable("id") Integer id) throws Exception {
+
+        userAdministratorService.updateLocation(id, location);
+        return ResponseEntity.status(HttpStatus.OK).body("Location updated successfully");
+    }
+
+    @CrossOrigin
     @PutMapping("/finish_project")
     public ResponseEntity<?> finishCollection(@Valid @RequestBody DTOProject dtoProject) throws CantFinishProject {
         Project projectClosed = userAdministratorService.finishProject(dtoProject);

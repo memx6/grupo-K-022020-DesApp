@@ -65,6 +65,27 @@ public class UserAdministratorService {
         return newProject;
     }
 
+    @ExceptionHandler({ InvalidDateEndForProject.class, InvalidMinPercent.class, FactorInvalid.class, LocationAlreadyExists.class })
+    public void updateProject(Integer projectId, DTOProject project) throws Exception {
+        Project newProject = projectService.findById(projectId);
+
+        newProject.setProjectName(project.getProjectName());
+        newProject.setFactor(project.getFactor());
+        newProject.setMinimumClosingPercentage(project.getMinimumClosingPercentage());
+        newProject.setDateStart(project.getDateStart());
+        newProject.setDateEnd(project.getDateEnd());
+        projectService.save(newProject);
+    }
+    public Location updateLocation(Integer locationId, Location location) throws Exception {
+        Location newLocation = locationService.findById(locationId);
+
+        newLocation.setPopulation(location.getPopulation());
+        newLocation.setProvince(location.getProvince());
+        locationService.save(newLocation);
+
+        return newLocation;
+    }
+
     @ExceptionHandler(CantFinishProject.class)
     @Transactional
     public Project finishProject(DTOProject dtoProject) throws CantFinishProject {

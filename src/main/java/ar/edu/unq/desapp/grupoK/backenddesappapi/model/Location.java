@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoK.backenddesappapi.model;
 
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.MustBeAPositive;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -51,5 +53,18 @@ public class Location {
     }
     public void setConnectivityState(boolean state) {
         this.connectivityState = state;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setProvince(String province) {
+        this.province = province;
+    }
+    public void setPopulation(Integer population) throws MustBeAPositive {
+        if (population < 1) {
+            throw new MustBeAPositive("Invalid population input.the population must be a positive number");
+        }
+        this.population = population;
     }
 }
