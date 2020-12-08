@@ -30,9 +30,6 @@ public class UserAdministratorService {
     private ProjectService projectService;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private EmailService emailService;
 
     @Transactional
