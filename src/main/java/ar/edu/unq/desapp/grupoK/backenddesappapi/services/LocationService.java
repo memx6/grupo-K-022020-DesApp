@@ -30,4 +30,5 @@ public class LocationService {
     public List<Location> findAll() {
         return this.locationRepository.findAll();
     }
+
 }
