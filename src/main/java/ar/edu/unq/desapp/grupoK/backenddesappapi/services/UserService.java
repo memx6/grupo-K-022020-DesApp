@@ -6,18 +6,23 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.User;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTODonation;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOUser;
-import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidDonatedMoney;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.DonationRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorExistingUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -53,6 +58,8 @@ public class UserService {
         if (userSaved != null) {
             throw new ErrorExistingUser(user.getEmail());
         }
+        String token = getJWTToken(userSaved.getName());
+        userSaved.setToken(token);
         return userRepository.save(user);
     }
 
@@ -65,6 +72,8 @@ public class UserService {
         if (!(userLogin.getPassword().equals(dtoUser.getPassword()))) {
             throw new ErrorLoginUser();
         }
+        String token = getJWTToken(userLogin.getName());
+        userLogin.setToken(token);
         return userLogin;
     }
 
@@ -95,5 +104,25 @@ public class UserService {
         userRecovered.setPassword(user.getPassword());
         userRecovered.setEmail(user.getEmail());
         userRepository.save(userRecovered);
+    }
+
+    private String getJWTToken(String name) {
+        String secretKey = "mySecretKey";
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+                .commaSeparatedStringToAuthorityList("ROLE_USER");
+
+        String token = Jwts
+                .builder()
+                .setSubject(name)
+                .claim("authorities",
+                        grantedAuthorities.stream()
+                                .map(GrantedAuthority::getAuthority)
+                                .collect(Collectors.toList()))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .signWith(SignatureAlgorithm.HS512,
+                        secretKey.getBytes()).compact();
+
+        return "Bearer " + token;
     }
 }

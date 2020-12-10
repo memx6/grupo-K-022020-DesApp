@@ -11,6 +11,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginU
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -42,17 +43,21 @@ public class UserController {
     }
 
     @CrossOrigin
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> create(@Valid @RequestBody User user) throws ErrorExistingUser {
         User newUser = userService.create(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
     
     @CrossOrigin
-    @PostMapping("/login")
-    public ResponseEntity<User> login(@Valid @RequestBody DTOUser dtoUser) throws ErrorLoginUser {
-        User userLogin = userService.login(dtoUser);
-        return new ResponseEntity<>(userLogin, HttpStatus.ACCEPTED);
+    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity login(@Valid @RequestBody DTOUser dtoUser) throws ErrorLoginUser {
+        try {
+            User userLogin = userService.login(dtoUser);
+            return new ResponseEntity<>(userLogin, HttpStatus.ACCEPTED);
+        } catch (ErrorLoginUser e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
     }
 
     @CrossOrigin
@@ -64,7 +69,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @PostMapping("/donate")
+    @PostMapping(value = "/donate", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Donation> donate(@Valid @RequestBody DTODonation dtoDonation) throws InvalidDonatedMoney {
         Donation donation = userService.donate(dtoDonation);
         return new ResponseEntity<>(donation, HttpStatus.ACCEPTED);

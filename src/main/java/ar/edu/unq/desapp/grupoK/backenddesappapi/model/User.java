@@ -40,6 +40,8 @@ public class User {
     @Access(AccessType.FIELD)
     protected Rol rol = Rol.ROLE_USER;
 
+    protected String token;
+
     public User() {}
 
     public User(String name,
@@ -106,4 +108,7 @@ public class User {
     public void setRol(Rol newRole){
         this.rol = newRole;
     }
+
+    public String getToken() { return token; }
+    public void setToken(String token) { this.token = token; }
 }
