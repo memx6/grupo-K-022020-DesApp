@@ -9,11 +9,16 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.InvalidMinPerc
 import ar.edu.unq.desapp.grupoK.backenddesappapi.repositories.UserAdministratorRepository;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.ErrorLoginUser;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.LocationAlreadyExists;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +48,8 @@ public class UserAdministratorService {
         if (!(adminLogin.getPassword().equals(password))) {
             throw new ErrorLoginUser();
         }
+        String token = getJWTToken(adminLogin.getName());
+        adminLogin.setToken(token);
         return adminLogin;
     }
 
@@ -110,5 +117,25 @@ public class UserAdministratorService {
     public List<String> topThe10LeastChosenLocations() {
         List<String> locations = projectService.topThe10LeastChosenLocations();
         return locations;
+    }
+
+    private String getJWTToken(String name) {
+        String secretKey = "mySecretKey";
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+                .commaSeparatedStringToAuthorityList("ROLE_USER");
+
+        String token = Jwts
+                .builder()
+                .setSubject(name)
+                .claim("authorities",
+                        grantedAuthorities.stream()
+                                .map(GrantedAuthority::getAuthority)
+                                .collect(Collectors.toList()))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .signWith(SignatureAlgorithm.HS512,
+                        secretKey.getBytes()).compact();
+
+        return "Bearer " + token;
     }
 }

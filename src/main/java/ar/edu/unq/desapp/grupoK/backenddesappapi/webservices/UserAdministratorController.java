@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoK.backenddesappapi.webservices;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Location;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.Project;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.UserAdministrator;
+import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOAdmin;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.dto.DTOProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.CantFinishProject;
 import ar.edu.unq.desapp.grupoK.backenddesappapi.model.exceptions.FactorInvalid;
@@ -14,6 +15,7 @@ import ar.edu.unq.desapp.grupoK.backenddesappapi.services.exceptions.LocationAlr
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,14 +31,14 @@ public class UserAdministratorController {
     private UserAdministratorService userAdministratorService;
 
     @CrossOrigin
-    @PostMapping("/login")
-    public ResponseEntity<UserAdministrator> login(@Valid @RequestBody UserAdministrator admin) throws ErrorLoginUser {
+    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserAdministrator> login(@Valid @RequestBody DTOAdmin admin) throws ErrorLoginUser {
         UserAdministrator adminLogin = userAdministratorService.login(admin.getEmail(), admin.getPassword());
         return new ResponseEntity<>(adminLogin, HttpStatus.ACCEPTED);
     }
 
     @CrossOrigin
-    @PostMapping("/create/project/")
+    @PostMapping(value = "/create/project/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Project> createProject(@Valid @RequestBody DTOProject dtoProject) throws InvalidMinPercent, FactorInvalid, InvalidDateEndForProject, LocationAlreadyExists {
         Project newProject = userAdministratorService.createProject(dtoProject);
         return new ResponseEntity<>(newProject, HttpStatus.CREATED);

@@ -81,7 +81,7 @@ public class InitServiceInMemory {
                 .build();
         Project projectAvellaneda = ProjectBuilder.projectwithName("Proyecto Avellaneda")
                 .withFactor(1000)
-                .withDateEnd(LocalDate.parse("2020-12-11"))
+                .withDateEnd(LocalDate.parse("2020-12-30"))
                 .withLocation(avellaneda)
                 .build();
 
