@@ -16,6 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/user/create").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/admin/login").permitAll()
+                .antMatchers("/**/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/project/projects_open").permitAll()
                 .antMatchers("/project/project_nearing").permitAll().anyRequest().authenticated().and()
                 .httpBasic();
